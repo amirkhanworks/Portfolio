@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth scrolling for in-page links */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0e0f23;
+  background-image: radial-gradient(
+    600px circle at var(--x, 50%) var(--y, 50%),
+    rgba(255, 255, 255, 0.08),
+    transparent 80%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  transition: background 0.2s ease;
+}
