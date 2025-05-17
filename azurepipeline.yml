@@ -19,14 +19,15 @@ steps:
 - script: |
     npm install
     npm run build
-  displayName: 'Install & Build React App'
+    npm install -g serve
+  displayName: 'Build React App & Install serve'
 
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(reactAppBuildDir)'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-  displayName: 'Copy build files'
+  displayName: 'Copy build output'
 
 - task: ArchiveFiles@2
   inputs:
@@ -35,7 +36,13 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/build.zip'
     replaceExistingArchive: true
-  displayName: 'Archive App'
+  displayName: 'Zip build folder'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/build.zip'
+    ArtifactName: 'react-portfolio'
+  displayName: 'Publish build.zip'
 
 - task: AzureWebApp@1
   inputs:
