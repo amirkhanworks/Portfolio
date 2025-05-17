@@ -25,19 +25,28 @@ steps:
   inputs:
     SourceFolder: '$(reactAppBuildDir)'
     Contents: '**'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/app'
   displayName: 'Copy build files to Artifact Staging'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/app'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
+    replaceExistingArchive: true
+  displayName: 'Archive App Files'
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/app.zip'
     ArtifactName: 'react-portfolio'
   displayName: 'Publish Artifact'
 
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: '<YOUR_AZURE_SERVICE_CONNECTION>'
+    azureSubscription: 'Akash-DevOps-SvC'
     appType: 'webAppLinux'
-    appName: '<YOUR_APP_NAME>'
-    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+    appName: 'akash-portfolio'
+    package: '$(Build.ArtifactStagingDirectory)/app.zip'
   displayName: 'Deploy to Azure App Service'
