@@ -3,7 +3,7 @@ import { CheckCircle } from 'lucide-react';
 
 const experience = [
   {
-    year: '2023 — Present',
+    year: '2023 – Present',
     title: 'Senior Product Engineer · LTIMindtree',
     url: 'https://www.ltimindtree.com/',
     bullets: [
@@ -15,7 +15,7 @@ const experience = [
     tools: ['Azure DevOps', 'Terraform', 'AKS', 'Docker', 'Logic Apps', 'OpenAI']
   },
   {
-    year: '2021 — 2023',
+    year: '2021 – 2023',
     title: 'Technical Consultant (DevOps) · IFI Techsolutions',
     url: 'https://ifitechnologies.com/',
     bullets: [
@@ -26,7 +26,7 @@ const experience = [
     tools: ['Azure PaaS', 'Terraform', 'JMeter', 'Azure Virtual Desktop']
   },
   {
-    year: '2020 — 2021',
+    year: '2020 – 2021',
     title: 'Senior Cloud Engineer · IFI Techsolutions',
     url: 'https://ifitechnologies.com/',
     bullets: [
@@ -37,7 +37,7 @@ const experience = [
     tools: ['Azure Automation', 'PowerShell', 'ADDS', 'AVD', 'Azure VM']
   },
   {
-    year: '2019 — 2020',
+    year: '2019 – 2020',
     title: 'Cloud Engineer · IFI Techsolutions',
     url: 'https://ifitechnologies.com/',
     bullets: [
@@ -53,8 +53,8 @@ const ExperienceSection = () => (
     <h2 className="text-2xl font-bold mb-8">Experience</h2>
     <div className="space-y-12">
       {experience.map((item, index) => (
-        <div key={index} className="flex flex-col md:flex-row md:gap-6">
-          <p className="text-sm text-gray-400 w-32 shrink-0">{item.year}</p>
+        <div key={index} className="flex flex-col md:flex-row gap-4 md:gap-6">
+          <p className="text-sm text-gray-400 w-full md:w-32 shrink-0 md:pt-2">{item.year}</p>
           <a
             href={item.url}
             target="_blank"

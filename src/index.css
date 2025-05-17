@@ -2,19 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Smooth scrolling for in-page links */
 html {
   scroll-behavior: smooth;
 }
 
 body {
   background-color: #0e0f23;
-  background-image: radial-gradient(
-    600px circle at var(--x, 50%) var(--y, 50%),
-    rgba(255, 255, 255, 0.08),
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Radial animation behind cursor */
+#radial-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    400px circle at var(--x) var(--y),
+    rgba(56, 189, 248, 0.25),
+    rgba(56, 189, 248, 0.15) 30%,
+    rgba(56, 189, 248, 0.05) 60%,
     transparent 80%
   );
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  transition: background 0.2s ease;
+  transition: background 0.05s ease;
+}
+
+#radial-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    400px circle at var(--x) var(--y),
+    rgba(56, 189, 248, 0.25),   /* Bright core (Sky-500) */
+    rgba(56, 189, 248, 0.15) 30%,
+    rgba(56, 189, 248, 0.05) 60%,
+    transparent 80%
+  );
 }

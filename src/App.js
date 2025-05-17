@@ -1,84 +1,111 @@
 import React, { useState, useEffect } from 'react';
 import './index.css';
-import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
 import ProjectModal from './components/ProjectModal';
 import ExperienceSection from './components/ExperienceSection';
 import ProjectSection from './components/ProjectSection';
 import BlogSection from './BComponents/BlogSection';
+import ContactForm from './BComponents/ContactForm';
+import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
+import profilePic from './assets/Me.jpg';
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
     const updateCursor = (e) => {
-      document.body.style.setProperty('--x', `${e.clientX}px`);
-      document.body.style.setProperty('--y', `${e.clientY}px`);
+      document.documentElement.style.setProperty('--x', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--y', `${e.clientY}px`);
     };
+
     window.addEventListener('mousemove', updateCursor);
     return () => window.removeEventListener('mousemove', updateCursor);
   }, []);
 
   return (
-    <div className="min-h-screen text-white font-sans grid md:grid-cols-[30%_70%] grid-cols-1">
-      
-      {/* Sidebar */}
-      <aside className="md:min-h-screen h-full px-8 py-10 text-white border-r border-zinc-800">
-        <div className="sticky top-10">
-          <h1 className="text-3xl font-extrabold tracking-tight">CodeSync</h1>
-          <p className="text-sm text-gray-400 mt-2">Connecting Code, Teams, and Success</p>
-          <p className="mt-6 text-gray-400 text-sm leading-relaxed">
-            I'm a DevOps engineer with expertise in building scalable infrastructure, secure cloud solutions,
-            and continuous delivery pipelines using Azure and GitHub Actions.
+    <>
+      {/* Radial Background */}
+      <div id="radial-overlay" />
+
+      <div className="flex flex-col lg:flex-row min-h-screen relative z-10 text-white font-sans">
+        {/* Sidebar */}
+        <aside className="lg:w-[30%] w-full h-auto lg:h-screen lg:sticky lg:top-0 z-20 bg-[#0e0f23]/80 backdrop-blur p-6 md:p-8 flex flex-col items-center justify-center">
+          <img
+            src={profilePic}
+            alt="Akash Roy"
+            className="rounded-full w-44 h-44 object-cover mb-6 border-4 border-accent shadow-lg animate-float"
+          />
+          <h1 className="text-5xl font-extrabold tracking-tight text-white mb-2">
+            Akash <span className="text-accent">Roy</span>
+          </h1>
+          <p className="text-md text-gray-400 text-center mb-6">
+            DevOps Engineer <br /> Cloud Architect <br /> Digital Transformation
           </p>
-
-          <nav className="mt-10 space-y-2 text-sm font-medium">
-            <a href="#about" className="block text-gray-300 hover:text-cyan-400">ABOUT</a>
-            <a href="#experience" className="block text-gray-300 hover:text-cyan-400">EXPERIENCE</a>
-            <a href="#projects" className="block text-gray-300 hover:text-cyan-400">PROJECTS</a>
-            <a href="#blogs" className="block text-gray-300 hover:text-cyan-400">BLOGS</a>
-            <a href="#contact" className="block text-gray-300 hover:text-cyan-400">CONTACT</a>
-          </nav>
-
-          <div className="flex space-x-4 mt-10 text-xl text-gray-400">
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400"><FaLinkedin /></a>
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400"><FaGithub /></a>
-            <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400"><FaTwitter /></a>
+          <div className="flex space-x-6 text-2xl text-gray-300">
+            <a href="mailto:youremail@example.com" className="hover:text-accent">
+              <i className="fas fa-envelope"></i>
+            </a>
+            <a href="https://linkedin.com/in/akashroy05" target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+              <FaLinkedin />
+            </a>
+            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+              <FaGithub />
+            </a>
+            <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+              <FaTwitter />
+            </a>
           </div>
-        </div>
-      </aside>
 
-      {/* Main Content */}
-      <main className="px-6 md:px-12 py-10">
-        {/* ABOUT SECTION */}
-        <section id="about" className="mb-16">
-          <h2 className="text-2xl font-bold mb-4">About Me</h2>
-          <p className="text-gray-300 leading-relaxed">
-            I design and automate scalable systems on the Azure cloud, aligning DevOps practices with business outcomes.
-            With a background in engineering and cloud-native development, I specialize in end-to-end delivery pipelines,
-            infrastructure as code, and containerization.
-          </p>
-        </section>
+          {/* Mobile Nav */}
+          <nav className="block lg:hidden mt-8 w-full text-center border-t border-gray-700 pt-4">
+            <div className="flex justify-center flex-wrap gap-4 text-sm font-medium">
+              <a href="#about" className="text-gray-300 hover:text-accent">ABOUT</a>
+              <a href="#experience" className="text-gray-300 hover:text-accent">EXPERIENCE</a>
+              <a href="#projects" className="text-gray-300 hover:text-accent">PROJECTS</a>
+              <a href="#blogs" className="text-gray-300 hover:text-accent">BLOGS</a>
+              <a href="#contact" className="text-gray-300 hover:text-accent">CONTACT</a>
+            </div>
+          </nav>
+        </aside>
 
-        {/* EXPERIENCE SECTION */}
-        <ExperienceSection />
+        {/* Desktop Nav */}
+        <nav className="hidden lg:flex fixed top-0 right-0 w-[70%] z-50 bg-transparent backdrop-blur-md px-6 md:px-12 py-4 justify-end space-x-6 text-sm font-medium border-b border-white/10">
+          <a href="#about" className="text-gray-300 hover:text-accent">ABOUT</a>
+          <a href="#experience" className="text-gray-300 hover:text-accent">EXPERIENCE</a>
+          <a href="#projects" className="text-gray-300 hover:text-accent">PROJECTS</a>
+          <a href="#blogs" className="text-gray-300 hover:text-accent">BLOGS</a>
+          <a href="#contact" className="text-gray-300 hover:text-accent">CONTACT</a>
+        </nav>
 
-        {/* PROJECTS SECTION */}
-        <ProjectSection />
+        {/* Main Content */}
+        <main className="relative lg:w-[70%] w-full px-6 md:px-12 pt-8 lg:pt-24 pb-10 bg-[#0e0f23]/80 backdrop-blur z-10 overflow-hidden">
+          <section id="about" className="mb-16 pt-4 max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold text-accent border-b border-accent mb-4 inline-block">About Me</h2>
+            <p className="text-gray-300 leading-relaxed">
+              I’m a Senior Product Engineer at LTIMindtree, where I drive digital transformation for global enterprises by building scalable, secure, and high-performance cloud solutions.
+              <br /><br />
+              My core expertise spans Azure DevOps, Terraform, Kubernetes, Logic Apps, and CI/CD automation.
+              <br /><br />
+              Previously at IFI Techsolutions, I led initiatives around cloud adoption, pre-sales solutioning, and proof-of-concepts.
+              <br /><br />
+              As a collaborative leader and continuous learner, I’m passionate about solving complex problems and pushing the boundaries of DevOps.
+            </p>
+          </section>
 
-        {/* BLOGS SECTION */}
-        <BlogSection />
+          <div className="max-w-4xl mx-auto">
+            <ExperienceSection />
+            <ProjectSection />
+            <BlogSection />
+            <ContactForm />
+          </div>
 
-        {/* FOOTER */}
-        <footer id="contact" className="text-sm text-gray-500 mt-16">
-          <p className="pb-6">
-            © {new Date().getFullYear()} CodeSync. Built with React + Tailwind. Hosted on Azure.
-          </p>
-        </footer>
-      </main>
+          <footer id="contact" className="text-sm text-gray-500 mt-16 text-center">
+            <p>© {new Date().getFullYear()} CodeSync. Built with React + Tailwind. Hosted on Azure.</p>
+          </footer>
+        </main>
+      </div>
 
-      {/* PROJECT MODAL */}
       <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
-    </div>
+    </>
   );
 }
 
