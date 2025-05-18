@@ -50,7 +50,7 @@ const experience = [
 
 const ExperienceSection = () => (
   <section id="experience" className="mb-16 text-white">
-    <h2 className="text-2xl font-bold mb-8">Experience</h2>
+    <h2 className="text-2xl font-bold text-accent mb-4">Experience</h2>
     <div className="space-y-12">
       {experience.map((item, index) => (
         <div key={index} className="flex flex-col md:flex-row gap-4 md:gap-6">

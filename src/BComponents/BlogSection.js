@@ -24,7 +24,7 @@ const BlogSection = () => {
 
   return (
     <section id="blogs" className="mt-20 mb-12 max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold text-accent border-b border-accent mb-4 inline-block">Blogs</h2>
+      <h2 className="text-2xl font-bold text-accent mb-4">Blogs</h2>
       {loading ? (
         <p className="text-gray-400">Loading latest blogs...</p>
       ) : blogs.length === 0 ? (
