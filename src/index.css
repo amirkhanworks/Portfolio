@@ -4,6 +4,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
 }
 
 body {
@@ -11,6 +12,16 @@ body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+}
+
+nav {
+  transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 1023px) {
+  #about {
+    margin-top: 1rem; /* Reduced from 3.5rem */
+  }
 }
 
 /* Radial animation behind cursor */
@@ -41,3 +52,25 @@ body {
     transparent 80%
   );
 }
+
+.client-back-btn {
+  position: fixed;
+  z-index: 50;
+}
+
+/* Mobile */
+@media (max-width: 1023px) {
+  .client-back-btn {
+    top: 1rem;
+    left: 1rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .client-back-btn {
+    top: 8rem; /* pushes it below the fixed navbar */
+    left: 2.5rem; /* aligns with content area */
+  }
+}
+

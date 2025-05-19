@@ -1,39 +1,46 @@
+// File: src/BComponents/TechStack.js
 import React from 'react';
-import {
-  SiTerraform,
-  SiDocker,
-  SiKubernetes,
-  SiReact,
-  SiGithubactions,
-  SiPrometheus,
-  SiGrafana,
-} from 'react-icons/si';
-import { VscAzureDevops } from 'react-icons/vsc'; // ✅ Correct import
+
+// Image imports from assets/Tech
+import argo from '../assets/Tech/Argo CD.png';
+import azureDevops from '../assets/Tech/Azure Devops.png';
+import azure from '../assets/Tech/Azure.png';
+import docker from '../assets/Tech/Docker.png';
+import githubActions from '../assets/Tech/GitHub Actions.png';
+import githubCopilot from '../assets/Tech/Github Copilot.png';
+import grafana from '../assets/Tech/Grafana.png';
+import prometheus from '../assets/Tech/Prometheus.png';
+import sonarQube from '../assets/Tech/SonarQube.png';
+import terraform from '../assets/Tech/HashiCorp Terraform.png';
+import kubernetes from '../assets/Tech/Kubernetes.png';
 
 const tools = [
-  { name: 'Azure DevOps', icon: <VscAzureDevops size={32} className="text-purple-400" /> },
-  { name: 'Terraform', icon: <SiTerraform size={32} className="text-indigo-400" /> },
-  { name: 'Docker', icon: <SiDocker size={32} className="text-blue-300" /> },
-  { name: 'Kubernetes', icon: <SiKubernetes size={32} className="text-blue-500" /> },
-  { name: 'GitHub Actions', icon: <SiGithubactions size={32} className="text-gray-300" /> },
-  { name: 'Prometheus', icon: <SiPrometheus size={32} className="text-orange-500" /> },
-  { name: 'Grafana', icon: <SiGrafana size={32} className="text-yellow-400" /> },
-  //{ name: 'React', icon: <SiReact size={32} className="text-cyan-300" /> },
+  { name: 'Argo CD', icon: argo },
+  { name: 'Azure DevOps', icon: azureDevops },
+  { name: 'Azure Cloud', icon: azure },
+  { name: 'Docker', icon: docker },
+  { name: 'GitHub Actions', icon: githubActions },
+  { name: 'GitHub Copilot', icon: githubCopilot },
+  { name: 'Grafana', icon: grafana },
+  { name: 'Prometheus', icon: prometheus },
+  { name: 'SonarQube', icon: sonarQube },
+  { name: 'Terraform', icon: terraform },
+  { name: 'Kubernetes', icon: kubernetes },
 ];
 
 const TechStack = () => {
   return (
-    <section id="techstack" className="mt-16 mb-8">
-      <h2 className="text-2xl font-bold text-accent mb-4">
-        Tech Stack
-      </h2>
+    <section id="techstack" className="mt-6 mb-8">
+      <h2 className="text-2xl font-bold text-accent mb-4">Tech Stack</h2>
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
         {tools.map((tool, index) => (
           <div key={index} className="flex flex-col items-center group">
-            <div className="p-4 bg-slate-800 rounded-full group-hover:bg-slate-700 transition">
-              {tool.icon}
+            <div className="p-4 bg-slate-800 rounded-full group-hover:bg-slate-700 transition w-16 h-16 flex items-center justify-center">
+              <img src={tool.icon} alt={tool.name} className="w-8 h-8 object-contain" />
             </div>
-            <span className="mt-2 text-sm text-slate-300 group-hover:text-white">{tool.name}</span>
+            <span className="mt-2 text-sm text-slate-300 group-hover:text-white text-center">
+              {tool.name}
+            </span>
           </div>
         ))}
       </div>
