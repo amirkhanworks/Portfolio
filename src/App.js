@@ -12,6 +12,8 @@ import Surety from './Clients/Surety';
 import CAB from './Clients/CAB';
 import MPSEDC from './Clients/MPSEDC';
 import LTIM from './Clients/LTIM';
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 
 function ScrollToTopButton() {
   const [visible, setVisible] = useState(false);

@@ -1,90 +1,107 @@
-import React from 'react';
-import { CheckCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import LTIMLogo from '../assets/Company Logo/LTIMindtree.png';
+import IFILogo from '../assets/Company Logo/IFI_Tech.png';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const experience = [
   {
     year: '2023 – Present',
-    title: 'Senior Product Engineer · LTIMindtree',
-    url: 'https://www.ltimindtree.com/',
+    company: 'LTIMindtree',
+    title: 'Senior Product Engineer',
+    logo: LTIMLogo,
     bullets: [
       'Modernized 10+ legacy systems using Azure PaaS and Containers',
       'Integrated Dynatrace, SonarQube & OWASP ZAP for DevSecOps',
       'Automated onboarding via Logic Apps & Power Automate',
       'Provisioned infra with Terraform & deployed OpenAI-based apps'
-    ],
-    tools: ['Azure DevOps', 'Terraform', 'AKS', 'Docker', 'Logic Apps', 'OpenAI']
+    ]
   },
   {
     year: '2021 – 2023',
-    title: 'Technical Consultant (DevOps) · IFI Techsolutions',
-    url: 'https://ifitechnologies.com/',
+    company: 'IFI Techsolutions',
+    title: 'Technical Consultant (DevOps)',
+    logo: IFILogo,
     bullets: [
       'Delivered CI/CD pipelines using Azure DevOps and PaaS tools',
       'Led POCs, presales demos, and client workshops on AVD',
       'Configured VNet, NSG, DNS and secured Azure networks'
-    ],
-    tools: ['Azure PaaS', 'Terraform', 'JMeter', 'Azure Virtual Desktop']
+    ]
   },
   {
     year: '2020 – 2021',
-    title: 'Senior Cloud Engineer · IFI Techsolutions',
-    url: 'https://ifitechnologies.com/',
+    company: 'IFI Techsolutions',
+    title: 'Senior Cloud Engineer',
+    logo: IFILogo,
     bullets: [
       'Managed virtualization for 6000+ users',
       'Automated deployments with PowerShell & Runbooks',
       'Deployed ADDS & enabled secure remote hiring'
-    ],
-    tools: ['Azure Automation', 'PowerShell', 'ADDS', 'AVD', 'Azure VM']
+    ]
   },
   {
     year: '2019 – 2020',
-    title: 'Cloud Engineer · IFI Techsolutions',
-    url: 'https://ifitechnologies.com/',
+    company: 'IFI Techsolutions',
+    title: 'Cloud Engineer',
+    logo: IFILogo,
     bullets: [
       'Built virtual IT environments for manufacturing & investment clients',
       'Supported Fortune 500 clients and Azure Expert MSP certification'
-    ],
-    tools: ['Azure VNet', 'Azure Maps', 'Azure Cognitive Services', 'Azure IoT']
+    ]
   }
 ];
 
-const ExperienceSection = () => (
-  <section id="experience" className="mb-16 text-white">
-    <h2 className="text-2xl font-bold text-accent mb-4">Experience</h2>
-    <div className="space-y-12">
-      {experience.map((item, index) => (
-        <div key={index} className="flex flex-col md:flex-row gap-4 md:gap-6">
-          <p className="text-sm text-gray-400 w-full md:w-32 shrink-0 md:pt-2">{item.year}</p>
-          <a
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 group border border-cyan-700 hover:border-cyan-400 transition-all rounded-lg p-6 bg-[#0e0e0e] shadow-md hover:shadow-[0_0_15px_#00ffff]"
-          >
-            <h3 className="text-lg font-semibold text-cyan-300 group-hover:underline mb-3">{item.title}</h3>
-            <ul className="list-none text-sm text-gray-300 space-y-2 mb-4">
-              {item.bullets.map((point, i) => (
-                <li key={i} className="flex items-start gap-2">
-                  <CheckCircle size={14} className="text-cyan-400 mt-[2px]" />
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="flex flex-wrap gap-2">
-              {item.tools.map((tool, idx) => (
-                <span
-                  key={idx}
-                  className="bg-cyan-700 text-xs text-white px-2 py-1 rounded shadow"
-                >
-                  {tool}
+const ExperienceSection = () => {
+  const [openIndex, setOpenIndex] = useState(null); // Nothing open initially
+
+  const toggle = (i) => {
+    setOpenIndex(openIndex === i ? null : i);
+  };
+
+  return (
+    <section id="experience" className="px-4 py-10 text-white max-w-4xl mx-auto">
+      <h2 className="text-2xl font-bold text-accent mb-10">Experience</h2>
+      <div className="flex flex-col gap-8">
+        {experience.map((exp, i) => (
+          <div key={i} className="flex flex-col sm:flex-row gap-4">
+            {/* Timeline Year */}
+            <div className="text-sm text-gray-400 w-32 sm:text-right sm:pt-1">{exp.year}</div>
+
+            {/* Accordion Content */}
+            <div className="flex-1">
+              <div
+                onClick={() => toggle(i)}
+                className="cursor-pointer group flex items-center justify-between bg-[#0e0e0e] border border-cyan-700 hover:border-cyan-400 transition rounded-lg px-5 py-4"
+              >
+                <div className="flex items-center gap-3">
+                  <img src={exp.logo} alt={exp.company} className="w-9 h-9 rounded-sm object-contain" />
+                  <div>
+                    <h3 className="text-cyan-300 font-semibold">{exp.company}</h3>
+                    <p className="text-sm text-gray-300">{exp.title}</p>
+                  </div>
+                </div>
+                <span className="text-cyan-400">
+                  {openIndex === i ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                 </span>
-              ))}
+              </div>
+
+              {/* Expandable Detail */}
+              <div
+                className={`transition-all duration-500 overflow-hidden ${
+                  openIndex === i ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0'
+                }`}
+              >
+                <ul className="list-disc list-inside text-sm text-gray-300 space-y-2 pl-2">
+                  {exp.bullets.map((point, idx) => (
+                    <li key={idx}>{point}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </a>
-        </div>
-      ))}
-    </div>
-  </section>
-);
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 export default ExperienceSection;
