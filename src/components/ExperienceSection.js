@@ -51,7 +51,7 @@ const experience = [
 ];
 
 const ExperienceSection = () => {
-  const [openIndex, setOpenIndex] = useState(null); // Nothing open initially
+  const [openIndex, setOpenIndex] = useState(null);
 
   const toggle = (i) => {
     setOpenIndex(openIndex === i ? null : i);
@@ -63,17 +63,17 @@ const ExperienceSection = () => {
       <div className="flex flex-col gap-8">
         {experience.map((exp, i) => (
           <div key={i} className="flex flex-col sm:flex-row gap-4">
-            {/* Timeline Year */}
             <div className="text-sm text-gray-400 w-32 sm:text-right sm:pt-1">{exp.year}</div>
 
-            {/* Accordion Content */}
             <div className="flex-1">
               <div
                 onClick={() => toggle(i)}
-                className="cursor-pointer group flex items-center justify-between bg-[#0e0e0e] border border-cyan-700 hover:border-cyan-400 transition rounded-lg px-5 py-4"
+                className="cursor-pointer group flex items-center justify-between bg-black border border-cyan-700 hover:border-cyan-400 transition rounded-lg px-5 py-4"
               >
                 <div className="flex items-center gap-3">
-                  <img src={exp.logo} alt={exp.company} className="w-9 h-9 rounded-sm object-contain" />
+                  <div className="w-12 h-12 p-1 bg-white rounded-md shadow-md flex items-center justify-center">
+                    <img src={exp.logo} alt={exp.company} className="w-full h-full object-contain" />
+                  </div>
                   <div>
                     <h3 className="text-cyan-300 font-semibold">{exp.company}</h3>
                     <p className="text-sm text-gray-300">{exp.title}</p>
@@ -84,7 +84,6 @@ const ExperienceSection = () => {
                 </span>
               </div>
 
-              {/* Expandable Detail */}
               <div
                 className={`transition-all duration-500 overflow-hidden ${
                   openIndex === i ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0'
