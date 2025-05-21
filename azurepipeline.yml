@@ -17,17 +17,16 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install
+    npm ci
     npm run build
-    npm install -g serve
-  displayName: 'Build React App & Install serve'
+  displayName: 'Install dependencies & build React app'
 
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(reactAppBuildDir)'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-  displayName: 'Copy build output'
+  displayName: 'Copy build output to staging'
 
 - task: ArchiveFiles@2
   inputs:
@@ -36,13 +35,13 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/build.zip'
     replaceExistingArchive: true
-  displayName: 'Zip build folder'
+  displayName: 'Archive build folder as build.zip'
 
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/build.zip'
     ArtifactName: 'react-portfolio'
-  displayName: 'Publish build.zip'
+  displayName: 'Publish build.zip to artifacts'
 
 - task: AzureWebApp@1
   inputs:
@@ -50,4 +49,4 @@ steps:
     appType: 'webAppLinux'
     appName: 'akash-portfolio'
     package: '$(Build.ArtifactStagingDirectory)/build.zip'
-  displayName: 'Deploy to Azure App Service'
+  displayName: 'Deploy to Azure Web App'
