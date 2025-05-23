@@ -13,6 +13,12 @@ import prometheus from '../assets/Tech/Prometheus.png';
 import sonarQube from '../assets/Tech/SonarQube.png';
 import terraform from '../assets/Tech/HashiCorp Terraform.png';
 import kubernetes from '../assets/Tech/Kubernetes.png';
+import linux from '../assets/Tech/Linux.png';
+import powershell from '../assets/Tech/Powershell.png';
+//import googleCloud from '../assets/Tech/Google Cloud.png';
+import gitlab from '../assets/Tech/GitLab.png';
+import helm from '../assets/Tech/Helm.png';
+import jira from '../assets/Tech/Jira.png';
 
 const tools = [
   { name: 'Argo CD', icon: argo },
@@ -26,6 +32,12 @@ const tools = [
   { name: 'SonarQube', icon: sonarQube },
   { name: 'Terraform', icon: terraform },
   { name: 'Kubernetes', icon: kubernetes },
+  { name: 'Linux', icon: linux },
+  { name: 'PowerShell', icon: powershell },
+  //{ name: 'Google Cloud', icon: googleCloud },
+  { name: 'GitLab', icon: gitlab },
+  { name: 'Helm', icon: helm },
+  { name: 'Jira', icon: jira }
 ];
 
 const TechStack = () => {
