@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaLinkedin, FaGithub, FaTwitter, FaArrowLeft } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaArrowLeft } from 'react-icons/fa';
 import profilePic from '../assets/Profile photo/Me.jpg';
 
 const SidebarLayout = ({ children, showBack }) => {
@@ -11,41 +11,62 @@ const SidebarLayout = ({ children, showBack }) => {
       {/* Sidebar */}
       <aside className="lg:w-[30%] w-full h-auto lg:h-screen lg:sticky lg:top-0 z-20 bg-[#0e0f23]/80 backdrop-blur p-6 md:p-8 flex flex-col items-center justify-center">
         <img
-            src={profilePic}
-            alt="Akash Roy"
-            className="rounded-full w-44 h-44 object-cover mb-6 border-4 border-accent shadow-lg animate-float"
+          src={profilePic}
+          alt="Akash Roy"
+          className="rounded-full w-44 h-44 object-cover mb-6 border-4 border-accent shadow-lg animate-float"
         />
 
         <h1 className="text-5xl font-extrabold tracking-tight text-white mb-2">
-            Akash <span className="text-accent">Roy</span>
+          Akash <span className="text-accent">Roy</span>
         </h1>
 
         <p className="text-sm text-cyan-400 text-center mt-2 mb-4 px-4 leading-snug">
-            Empowering digital transformation through resilient DevOps pipelines and secure, scalable cloud infrastructure.
+          Empowering digital transformation through resilient DevOps pipelines and secure, scalable cloud infrastructure.
         </p>
 
-        {/* Social Icons – spaced tighter */}
+        {/* Social Icons */}
         <div className="flex justify-center space-x-6 text-2xl text-gray-300 mb-4">
-            <a href="https://linkedin.com/in/akashroy05" target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+          <a
+            href="https://linkedin.com/in/akashroy05"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-accent"
+          >
             <FaLinkedin />
-            </a>
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+          </a>
+          <a
+            href="https://github.com/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-accent"
+          >
             <FaGithub />
-            </a>
+          </a>
         </div>
 
-        {/* Resume Button – tightened spacing */}
-        <div className="w-full flex justify-center">
-            <a
+        {/* Resume Button */}
+        <div className="w-full flex justify-center mb-4">
+          <a
             href="/Akash - DevOps 2025.pdf"
             download
             className="px-5 py-2 bg-cyan-600 text-white text-sm font-semibold rounded hover:bg-cyan-700 transition"
-            >
+          >
             Download Resume
-            </a>
+          </a>
         </div>
-        </aside>
 
+        {/* Divider line - visible on mobile only */}
+        <div className="w-full h-[2px] bg-cyan-500 my-3 block lg:hidden" />
+
+        {/* Mobile Navigation */}
+        <div className="flex lg:hidden flex-wrap justify-center gap-4 text-sm text-white">
+          <a href="#about" className="hover:text-accent">ABOUT</a>
+          <a href="#techstack" className="hover:text-accent">TECH</a>
+          <a href="#experience" className="hover:text-accent">EXPERIENCE</a>
+          <a href="#clients" className="hover:text-accent">CLIENTS</a>
+          <a href="#blogs" className="hover:text-accent">BLOGS</a>
+        </div>
+      </aside>
 
       {/* Desktop Nav */}
       <nav className="hidden lg:flex fixed top-0 right-0 w-[70%] z-50 bg-transparent backdrop-blur-md px-6 md:px-12 py-4 justify-end space-x-6 text-sm font-medium border-b border-white/10">
