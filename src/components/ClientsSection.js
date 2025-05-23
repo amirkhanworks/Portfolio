@@ -17,7 +17,7 @@ const clients = [
   { name: 'LTIMindtree', logo: ltimLogo, link: '/ltim' },
   { name: 'BEL', logo: belLogo, link: '/bel' },
   { name: 'CDAC', logo: cdacLogo, link: '/cdac' },
-  { name: 'Charles Stanley', logo: csLogo, link: '/charles' },
+  { name: 'Charles Stanley', logo: csLogo, link: '/charlesStanley' },
   { name: 'Yash Raj Films', logo: yrfLogo, link: '/yrf' }
 ];
 
@@ -25,7 +25,7 @@ const ClientsSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="clients" className="my-20">
+    <section id="clients" className="mt-8 mb-20">
       <h2 className="text-2xl font-bold text-cyan-400 mb-8">
         Clients I’ve Worked With
       </h2>
