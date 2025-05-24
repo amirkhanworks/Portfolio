@@ -12,8 +12,8 @@ import yrfLogo from '../assets/Clients/yrf.png';
 
 const clients = [
   { name: 'Surety', logo: suretyLogo, link: '/surety' },
-  { name: 'Cricket Association of Bengal', logo: cabLogo, link: '/cab' },
-  { name: 'MPSEDC – Ladli Behna Yojana', logo: mpLogo, link: '/mpsedc' },
+  { name: 'CAB', logo: cabLogo, link: '/cab' },
+  { name: 'MPSEDC', logo: mpLogo, link: '/mpsedc' },
   { name: 'LTIMindtree', logo: ltimLogo, link: '/ltim' },
   { name: 'BEL', logo: belLogo, link: '/bel' },
   { name: 'CDAC', logo: cdacLogo, link: '/cdac' },
