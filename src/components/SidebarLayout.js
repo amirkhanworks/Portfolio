@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaLinkedin, FaGithub, FaArrowLeft } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaArrowLeft, FaEnvelope } from 'react-icons/fa';
 import profilePic from '../assets/Profile photo/Me.jpg';
 
 const SidebarLayout = ({ children, showBack }) => {
@@ -41,6 +41,13 @@ const SidebarLayout = ({ children, showBack }) => {
             className="hover:text-accent"
           >
             <FaGithub />
+          </a>
+          <a
+            href="mailto:akashroy.636@gmail.com"
+            className="hover:text-accent"
+            aria-label="Email"
+          >
+            <FaEnvelope />
           </a>
         </div>
 

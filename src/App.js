@@ -9,6 +9,7 @@ import ExperienceSection from './components/ExperienceSection';
 import BlogSection from './BComponents/BlogSection';
 import TechStack from './BComponents/TechStack';
 import ClientsSection from './components/ClientsSection';
+import PhotoGallery from './components/PhotoGallery';
 
 import Surety from './Clients/Surety';
 import CAB from './Clients/CAB';
@@ -61,15 +62,18 @@ function Home({ setSelectedProject }) {
         </div>
       </section>
 
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto space-y-16">
         <TechStack />
         <ExperienceSection />
         <ClientsSection />
         <BlogSection />
+        <PhotoGallery />
       </div>
 
       <footer id="contact" className="text-sm text-gray-500 mt-16 text-center">
-        <p>© {new Date().getFullYear()} Akash Roy. Built with React + Tailwind. Hosted on Azure.</p>
+        <div className="flex flex-col items-center space-y-1 text-white text-opacity-90 text-[13px] font-light">
+        </div>
+        <p className="mt-4 text-gray-500">© {new Date().getFullYear()} Akash Roy. Built with React + Tailwind. Hosted on Azure.</p>
       </footer>
     </>
   );
