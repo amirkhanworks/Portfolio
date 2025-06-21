@@ -35,7 +35,7 @@ const SidebarLayout = ({ children, showBack }) => {
             <FaLinkedin />
           </a>
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/akash-roy-123"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-accent"
