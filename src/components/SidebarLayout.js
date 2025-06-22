@@ -21,7 +21,7 @@ const SidebarLayout = ({ children, showBack }) => {
         </h1>
 
         <p className="text-sm text-cyan-400 text-center mt-2 mb-4 px-4 leading-snug">
-          Empowering digital transformation through resilient DevOps pipelines and secure, scalable cloud infrastructure.
+          I make sure your cloud runs on autopilot — fast, secure, and drama-free.
         </p>
 
         {/* Social Icons */}
