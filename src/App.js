@@ -19,6 +19,7 @@ import BEL from './Clients/BEL';
 import CDAC from './Clients/CDAC';
 import YRF from './Clients/YRF';
 import CharlesStanley from './Clients/CharlesStanley';
+import LF from './Clients/LF';
 
 function ScrollToTopButton() {
   const [visible, setVisible] = useState(false);
@@ -103,6 +104,7 @@ function App() {
         <Route path="/bel" element={<SidebarLayout showBack={true}><BEL /></SidebarLayout>} />
         <Route path="/cdac" element={<SidebarLayout showBack={true}><CDAC /></SidebarLayout>} />
         <Route path="/yrf" element={<SidebarLayout showBack={true}><YRF /></SidebarLayout>} />
+        <Route path="/lf" element={<SidebarLayout showBack={true}><LF /></SidebarLayout>} /> {/* <-- Added route */}
         <Route path="/charlesstanley" element={<SidebarLayout showBack={true}><CharlesStanley /></SidebarLayout>} />
       </Routes>
 

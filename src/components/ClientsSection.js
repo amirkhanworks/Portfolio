@@ -10,6 +10,7 @@ import belLogo from '../assets/Clients/BEL.png';
 import cdacLogo from '../assets/Clients/cdac.png';
 import csLogo from '../assets/Clients/Charles Stanley.png';
 import yrfLogo from '../assets/Clients/yrf.png';
+import lfLogo from '../assets/Clients/LuvFilms.png';
 
 const industries = [
   {
@@ -38,6 +39,7 @@ const industries = [
     name: 'Media & Entertainment',
     clients: [
       { name: 'Yash Raj Films', logo: yrfLogo, link: '/yrf' },
+      { name: 'Luv Films', logo: lfLogo, link: '/lf' },
     ],
   },
 ];

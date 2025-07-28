@@ -1,10 +1,29 @@
 import React, { useState } from 'react';
 import LTIMLogo from '../assets/Company Logo/LTIMindtree.png';
 import IFILogo from '../assets/Company Logo/IFI_Tech.png';
+import McKinseyLogo from '../assets/Company Logo/McKinsey.jpg';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const experience = [
+  {
+    company: 'McKinsey & Company',
+    logo: McKinseyLogo,
+    year: 'Jul 2025 – Present',
+    roles: [
+      {
+        title: 'Cloud Infrastructure Engineer',
+        duration: 'Jul 2025 – Present',
+        responsibilities: [
+          'Worked on short-term engagement to assess migration of ArgoCD from an older version to the current stable version.',
+          'Contributed to Azure cost optimization analysis and security posture review.',
+        ],
+        achievements: [
+          'Completed PoC for AKS-based architecture within 1 week.',
+        ]
+      }
+    ]
+  },
   {
     company: 'LTIMindtree',
     logo: LTIMLogo,
