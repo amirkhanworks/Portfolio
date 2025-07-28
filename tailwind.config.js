@@ -34,4 +34,8 @@ module.exports = {
     },
   },
   plugins: [],
+  // Optimize for production
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
 };

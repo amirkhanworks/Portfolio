@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, useCallback } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import './index.css';
 import { FaChevronUp } from 'react-icons/fa';
@@ -10,15 +10,18 @@ import BlogSection from './BComponents/BlogSection';
 import TechStack from './BComponents/TechStack';
 import ClientsSection from './components/ClientsSection';
 import PhotoGallery from './components/PhotoGallery';
+import LoadingSpinner from './components/LoadingSpinner';
+import { usePerformance } from './hooks/usePerformance';
 
-import Surety from './Clients/Surety';
-import CAB from './Clients/CAB';
-import MPSEDC from './Clients/MPSEDC';
-import LTIM from './Clients/LTIM';
-import BEL from './Clients/BEL';
-import CDAC from './Clients/CDAC';
-import YRF from './Clients/YRF';
-import CharlesStanley from './Clients/CharlesStanley';
+// Lazy load client components
+const Surety = React.lazy(() => import('./Clients/Surety'));
+const CAB = React.lazy(() => import('./Clients/CAB'));
+const MPSEDC = React.lazy(() => import('./Clients/MPSEDC'));
+const LTIM = React.lazy(() => import('./Clients/LTIM'));
+const BEL = React.lazy(() => import('./Clients/BEL'));
+const CDAC = React.lazy(() => import('./Clients/CDAC'));
+const YRF = React.lazy(() => import('./Clients/YRF'));
+const CharlesStanley = React.lazy(() => import('./Clients/CharlesStanley'));
 
 function ScrollToTopButton() {
   const [visible, setVisible] = useState(false);
@@ -29,7 +32,9 @@ function ScrollToTopButton() {
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   return visible ? (
     <button
@@ -81,6 +86,9 @@ function Home({ setSelectedProject }) {
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
+  
+  // Performance monitoring
+  usePerformance();
 
   useEffect(() => {
     const updateCursor = (e) => {
@@ -96,14 +104,14 @@ function App() {
       <div id="radial-overlay" />
       <Routes>
         <Route path="/" element={<SidebarLayout><Home setSelectedProject={setSelectedProject} /></SidebarLayout>} />
-        <Route path="/surety" element={<SidebarLayout showBack={true}><Surety /></SidebarLayout>} />
-        <Route path="/cab" element={<SidebarLayout showBack={true}><CAB /></SidebarLayout>} />
-        <Route path="/mpsedc" element={<SidebarLayout showBack={true}><MPSEDC /></SidebarLayout>} />
-        <Route path="/ltim" element={<SidebarLayout showBack={true}><LTIM /></SidebarLayout>} />
-        <Route path="/bel" element={<SidebarLayout showBack={true}><BEL /></SidebarLayout>} />
-        <Route path="/cdac" element={<SidebarLayout showBack={true}><CDAC /></SidebarLayout>} />
-        <Route path="/yrf" element={<SidebarLayout showBack={true}><YRF /></SidebarLayout>} />
-        <Route path="/charlesstanley" element={<SidebarLayout showBack={true}><CharlesStanley /></SidebarLayout>} />
+        <Route path="/surety" element={<SidebarLayout showBack={true}><Suspense fallback={<LoadingSpinner />}><Surety /></Suspense></SidebarLayout>} />
+        <Route path="/cab" element={<SidebarLayout showBack={true}><Suspense fallback={<LoadingSpinner />}><CAB /></Suspense></SidebarLayout>} />
+        <Route path="/mpsedc" element={<SidebarLayout showBack={true}><Suspense fallback={<LoadingSpinner />}><MPSEDC /></Suspense></SidebarLayout>} />
+        <Route path="/ltim" element={<SidebarLayout showBack={true}><Suspense fallback={<LoadingSpinner />}><LTIM /></Suspense></SidebarLayout>} />
+        <Route path="/bel" element={<SidebarLayout showBack={true}><Suspense fallback={<LoadingSpinner />}><BEL /></Suspense></SidebarLayout>} />
+        <Route path="/cdac" element={<SidebarLayout showBack={true}><Suspense fallback={<LoadingSpinner />}><CDAC /></Suspense></SidebarLayout>} />
+        <Route path="/yrf" element={<SidebarLayout showBack={true}><Suspense fallback={<LoadingSpinner />}><YRF /></Suspense></SidebarLayout>} />
+        <Route path="/charlesstanley" element={<SidebarLayout showBack={true}><Suspense fallback={<LoadingSpinner />}><CharlesStanley /></Suspense></SidebarLayout>} />
       </Routes>
 
       <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />

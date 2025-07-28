@@ -1,13 +1,10 @@
 {
   "dependencies": {
-    "@testing-library/react": "^14.0.0",
-    "aos": "^2.3.4",
     "framer-motion": "^12.18.1",
     "lucide-react": "^0.501.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.5.0",
-    "react-image-lightbox": "^5.1.4",
     "react-router-dom": "^7.6.0",
     "react-scripts": "^5.0.1"
   },
@@ -20,7 +17,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "analyze": "npm run build && npx webpack-bundle-analyzer build/static/js/*.js"
   },
   "browserslist": {
     "production": [

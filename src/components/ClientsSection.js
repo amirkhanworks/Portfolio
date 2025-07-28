@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -42,7 +42,7 @@ const industries = [
   },
 ];
 
-const ClientsSection = () => {
+const ClientsSection = memo(() => {
   const navigate = useNavigate();
 
   return (
@@ -73,6 +73,6 @@ const ClientsSection = () => {
       </div>
     </div>
   );
-};
+});
 
 export default ClientsSection;

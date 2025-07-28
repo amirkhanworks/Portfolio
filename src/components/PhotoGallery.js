@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import rafting from '../assets/Gallery/Rafting.jpg';
 import one from '../assets/Gallery/1.jpg';
 import conference from '../assets/Gallery/IMG_8206.JPG';
@@ -15,7 +15,7 @@ const photos = [
   { src: anime, caption: "100% productivity boost powered by Naruto." }
 ];
 
-const PhotoGallery = () => {
+const PhotoGallery = memo(() => {
   return (
     <section className="px-6 py-16 text-white">
       <div className="text-center mb-12">
@@ -46,6 +46,6 @@ const PhotoGallery = () => {
       </div>
     </section>
   );
-};
+});
 
 export default PhotoGallery;
