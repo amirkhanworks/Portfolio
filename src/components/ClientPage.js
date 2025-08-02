@@ -11,7 +11,7 @@ const ClientPage = ({
   return (
     <div className="max-w-4xl mx-auto p-4 sm:p-6 text-white">
       {/* Desktop Layout */}
-      <div className="hidden md:block bg-[#0f172a] border border-cyan-800 rounded-lg p-8">
+      <div className="hidden md:block bg-[#111827] border border-cyan-700 rounded-xl p-6 sm:p-8">
         <h1 className="text-3xl font-bold text-accent mb-6">{title}</h1>
 
         <Section
@@ -33,7 +33,7 @@ const ClientPage = ({
 
       {/* Mobile Layout */}
       <div className="block md:hidden space-y-6">
-        <h1 className="text-2xl font-bold text-accent">{title}</h1>
+        <h1 className="text-2xl font-bold text-accent mb-4">{title}</h1>
 
         <MobileBlock title="Project Summary">
           {projectSummary}
@@ -90,8 +90,8 @@ const Section = ({ title, icon, content, list, techList }) => (
 );
 
 const MobileBlock = ({ title, children }) => (
-  <div className="border-l-4 border-cyan-700 pl-4">
-    <h2 className="text-base font-semibold text-cyan-400 mb-1">{title}</h2>
+  <div className="bg-[#111827] border border-cyan-700 rounded-xl p-4">
+    <h2 className="text-base font-semibold text-cyan-400 mb-2">{title}</h2>
     <div className="text-sm text-gray-300">{children}</div>
   </div>
 );

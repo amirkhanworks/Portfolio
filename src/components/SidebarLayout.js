@@ -9,23 +9,23 @@ const SidebarLayout = ({ children, showBack }) => {
   return (
     <div className="flex flex-col lg:flex-row min-h-screen relative z-10 text-white font-sans">
       {/* Sidebar */}
-      <aside className="lg:w-[30%] w-full h-auto lg:h-screen lg:sticky lg:top-0 z-20 bg-[#0e0f23]/80 backdrop-blur p-6 md:p-8 flex flex-col items-center justify-center">
+      <aside className="lg:w-[30%] w-full h-auto lg:h-screen lg:sticky lg:top-0 z-20 bg-[#0e0f23]/80 backdrop-blur p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center">
         <img
           src={profilePic}
           alt="Akash Roy"
-          className="rounded-full w-44 h-44 object-cover mb-6 border-4 border-accent shadow-lg animate-float"
+          className="rounded-full w-32 h-32 sm:w-44 sm:h-44 object-cover mb-4 sm:mb-6 border-4 border-accent shadow-lg animate-float"
         />
 
-        <h1 className="text-5xl font-extrabold tracking-tight text-white mb-2">
+        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-2">
           Akash <span className="text-accent">Roy</span>
         </h1>
 
-        <p className="text-sm text-cyan-400 text-center mt-2 mb-4 px-4 leading-snug">
-          I make sure your cloud runs on autopilot — fast, secure, and drama-free.
+        <p className="text-xs sm:text-sm text-cyan-400 text-center mt-2 mb-4 px-4 leading-snug">
+          I make sure your cloud runs on autopilot — fast, secure, and drama-free. No more 3 AM calls! 😄
         </p>
 
         {/* Social Icons */}
-        <div className="flex justify-center space-x-6 text-2xl text-gray-300 mb-4">
+        <div className="flex justify-center space-x-4 sm:space-x-6 text-xl sm:text-2xl text-gray-300 mb-4">
           <a
             href="https://linkedin.com/in/akashroy05"
             target="_blank"
@@ -66,7 +66,7 @@ const SidebarLayout = ({ children, showBack }) => {
         <div className="w-full h-[2px] bg-cyan-500 my-3 block lg:hidden" />
 
         {/* Mobile Navigation */}
-        <div className="flex lg:hidden flex-wrap justify-center gap-4 text-sm text-white">
+        <div className="flex lg:hidden flex-wrap justify-center gap-3 sm:gap-4 text-xs sm:text-sm text-white">
           <a href="#about" className="hover:text-accent">ABOUT</a>
           <a href="#techstack" className="hover:text-accent">TECH</a>
           <a href="#experience" className="hover:text-accent">EXPERIENCE</a>
@@ -85,7 +85,7 @@ const SidebarLayout = ({ children, showBack }) => {
       </nav>
 
       {/* Main Content */}
-      <main className="relative lg:w-[70%] w-full px-6 md:px-12 lg:pt-24 pb-10 bg-[#0e0f23]/80 backdrop-blur z-10 overflow-hidden">
+      <main className="relative lg:w-[70%] w-full px-4 sm:px-6 md:px-12 lg:pt-24 pb-10 bg-[#0e0f23]/80 backdrop-blur z-10 overflow-hidden">
         {showBack && (
           <div className="w-full px-4 md:px-6 lg:px-12 pt-6">
             <button

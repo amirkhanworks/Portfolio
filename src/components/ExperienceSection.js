@@ -17,10 +17,10 @@ const experience = [
         title: 'Senior DevOps Engineer',
         duration: '2025 – Present',
         responsibilities: [
-          'Lead cloud infrastructure and DevOps practices for McKinsey Digital.',
-          'Design and implement scalable CI/CD pipelines for enterprise applications.',
-          'Drive cloud migration and modernization initiatives across global teams.',
-          'Establish best practices for security, compliance, and operational excellence.'
+          'Orchestrated enterprise cloud infrastructure and DevOps practices for McKinsey Digital.',
+          'Architected scalable CI/CD pipelines for enterprise applications.',
+          'Spearheaded cloud migration and modernization initiatives across global teams.',
+          'Established comprehensive security and compliance frameworks.'
         ],
         achievements: [
           'Accelerated deployment cycles by 60% through automated pipeline optimization.',
@@ -40,13 +40,13 @@ const experience = [
         title: 'Senior Product Engineer',
         duration: '2023 – 2024',
         responsibilities: [
-          'Led Azure PaaS and container modernization across enterprise apps.',
+          'Led Azure PaaS and container modernization across enterprise applications.',
           'Drove DevSecOps automation with SonarQube, ZAP, and GitHub Actions.',
           'Implemented automated onboarding via Azure Logic Apps & Power Automate.',
           'Managed enterprise access policies using Azure Key Vault & Blueprints.'
         ],
         achievements: [
-          'Reduced infra cost by 30% and accelerated release cycle by 50%.',
+          'Reduced infrastructure costs by 30% and accelerated release cycles by 50%.',
           'Delivered multi-region deployments for 6 business-critical systems.',
           'Enabled 100% compliance in production pipelines through policy-as-code.',
           'Won “Engineering Excellence Award” for scalable cloud delivery.'
@@ -79,32 +79,32 @@ const experience = [
         title: 'Senior Cloud Engineer',
         duration: '2020 – 2021',
         responsibilities: [
-          'Maintained and optimized Azure cloud environments.',
-          'Built custom monitoring and alerting using Azure Monitor and Grafana.',
-          'Created secure access workflows with RBAC and conditional policies.',
-          'Managed AKS clusters and scaling rules for performance optimization.'
+          'Maintained and optimized Azure cloud environments for enterprise clients.',
+          'Developed custom monitoring and alerting solutions using Azure Monitor and Grafana.',
+          'Implemented secure access workflows with RBAC and conditional access policies.',
+          'Managed AKS clusters and implemented scaling rules for performance optimization.'
         ],
         achievements: [
-          'Achieved 99.99% uptime for core customer-facing apps.',
-          'Reduced alert noise by 60% through tuned observability dashboards.',
-          'Enabled secure multi-region DR across 3 environments.',
-          'Contributed to $1M+ RFP wins through strong architectural input.'
+          'Achieved 99.99% uptime for core customer-facing applications.',
+          'Reduced alert noise by 60% through optimized observability dashboards.',
+          'Implemented secure multi-region disaster recovery across 3 environments.',
+          'Contributed to $1M+ RFP wins through strategic architectural input.'
         ]
       },
       {
         title: 'Cloud Engineer',
         duration: '2019 – 2020',
         responsibilities: [
-          'Provisioned and configured Azure VMs, VNets, and storage.',
-          'Assisted senior engineers in building automated pipelines.',
-          'Supported deployments and patching during production cutovers.',
-          'Documented infrastructure and support handoffs for clients.'
+          'Provisioned and configured Azure VMs, VNets, and storage infrastructure.',
+          'Collaborated with senior engineers in developing automated CI/CD pipelines.',
+          'Supported production deployments and patching during critical cutovers.',
+          'Documented infrastructure architecture and facilitated support handoffs for clients.'
         ],
         achievements: [
-          'Completed Azure Administrator Associate certification.',
-          'Handled support for 10+ international customers.',
-          'Reduced manual effort by 30% via PowerShell automation.',
-          'Promoted within a year for performance consistency.'
+          'Completed Microsoft Azure Administrator Associate certification.',
+          'Provided technical support for 10+ international enterprise customers.',
+          'Reduced manual operational effort by 30% through PowerShell automation.',
+          'Promoted within a year for consistent high performance and technical excellence.'
         ]
       }
     ]
@@ -119,9 +119,16 @@ const ExperienceSection = memo(() => {
   }, [openIndex]);
 
   return (
-    <div id="experience" className="px-6 py-1">
-      <h2 className="text-2xl font-bold mb-12 text-accent mb-8">Experience</h2>
-      <div className="space-y-6">
+    <div id="experience" className="px-4 sm:px-6 py-8 sm:py-12">
+      <div className="text-center mb-8 sm:mb-12">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-2">Professional Experience</h2>
+        <div className="h-1 w-12 bg-cyan-400 mx-auto mb-4 rounded-full" />
+        <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto px-4">
+          Progressive career growth demonstrating technical leadership and strategic impact
+        </p>
+      </div>
+      
+      <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8">
         {experience.map((exp, index) => (
           <motion.div
             key={index}
@@ -129,20 +136,23 @@ const ExperienceSection = memo(() => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="bg-[#111827] border border-cyan-700 rounded-xl p-4 transition"
+            className="bg-[#111827] border border-cyan-700 rounded-xl p-4 sm:p-6 transition-all hover:border-cyan-500"
           >
             <div
               onClick={() => toggleIndex(index)}
-              className="cursor-pointer flex flex-col md:flex-row md:items-center md:justify-between hover:bg-[#1a1f2e] transition rounded-md px-2 py-1"
+              className="cursor-pointer flex flex-col lg:flex-row lg:items-center lg:justify-between hover:bg-[#1a1f2e] transition rounded-lg px-3 sm:px-4 py-3"
             >
-              <div className="flex items-center gap-4">
-                <img src={exp.logo} alt={exp.company} className="h-12 w-12 object-contain" />
-                <h3 className="text-lg font-semibold text-white">{exp.company}</h3>
+              <div className="flex items-center gap-4 sm:gap-6">
+                <img src={exp.logo} alt={exp.company} className="h-12 w-12 sm:h-16 sm:w-16 object-contain rounded-lg" />
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-1 truncate">{exp.company}</h3>
+                  <p className="text-cyan-400 text-sm font-medium">{exp.year}</p>
+                </div>
               </div>
-              <div className="flex items-center justify-between w-full md:w-auto mt-4 md:mt-0">
-                <span className="text-sm text-gray-400 md:mr-4">{exp.year}</span>
+              <div className="flex items-center justify-between w-full lg:w-auto mt-3 lg:mt-0">
+                <span className="text-xs sm:text-sm text-gray-400 lg:mr-6 truncate">{exp.roles[0].title}</span>
                 <div className="ml-auto">
-                  {openIndex === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                  {openIndex === index ? <ChevronUp size={20} className="sm:w-6 sm:h-6" /> : <ChevronDown size={20} className="sm:w-6 sm:h-6" />}
                 </div>
               </div>
             </div>
@@ -155,34 +165,52 @@ const ExperienceSection = memo(() => {
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.4, ease: 'easeInOut' }}
-                  className="overflow-hidden mt-6 space-y-8"
+                  className="overflow-hidden mt-6 sm:mt-8 space-y-6 sm:space-y-8"
                 >
                   {exp.roles.map((role, i) => (
                     <div
                       key={i}
-                      className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300 px-2"
+                      className="border-t border-cyan-700 pt-4 sm:pt-6"
                     >
-                      <div className="md:pr-6 relative">
-                        <h4 className="text-base font-semibold text-cyan-400 mb-1">
-                          {role.title}{' '}
-                          <span className="text-gray-400 text-sm">({role.duration})</span>
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
+                        <h4 className="text-base sm:text-lg font-bold text-cyan-400">
+                          {role.title}
                         </h4>
-                        <div className="md:border-r md:border-cyan-700 md:pr-6 md:mt-2">
-                          <h5 className="font-semibold text-white mb-2">Key Responsibilities</h5>
-                          <ul className="space-y-2 list-disc pl-4">
+                        <span className="text-xs sm:text-sm text-gray-400 bg-cyan-900/20 px-2 sm:px-3 py-1 rounded-full self-start sm:self-auto">
+                          {role.duration}
+                        </span>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                        <div>
+                          <h5 className="font-semibold text-white mb-3 sm:mb-4 flex items-center gap-2">
+                            <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                            Key Responsibilities
+                          </h5>
+                          <ul className="space-y-2 sm:space-y-3 text-sm text-gray-300">
                             {role.responsibilities.map((point, idx) => (
-                              <li key={idx}>{point}</li>
+                              <li key={idx} className="flex items-start gap-3">
+                                <span className="text-cyan-400 mt-2">•</span>
+                                <span>{point}</span>
+                              </li>
                             ))}
                           </ul>
                         </div>
-                      </div>
-                      <div className="md:pl-1 mt-8 md:mt-[35px]">
-                        <h5 className="font-semibold text-white mb-2">Key Achievements</h5>
-                        <ul className="space-y-2 list-disc pl-4">
-                          {role.achievements.map((point, idx) => (
-                            <li key={idx}>{point}</li>
-                          ))}
-                        </ul>
+                        
+                        <div>
+                          <h5 className="font-semibold text-white mb-3 sm:mb-4 flex items-center gap-2">
+                            <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                            Key Achievements
+                          </h5>
+                          <ul className="space-y-2 sm:space-y-3 text-sm text-gray-300">
+                            {role.achievements.map((point, idx) => (
+                              <li key={idx} className="flex items-start gap-3">
+                                <span className="text-green-400 mt-2">•</span>
+                                <span>{point}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   ))}
