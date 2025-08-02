@@ -41,7 +41,7 @@ const FeaturedProjects = memo(() => {
   };
 
   return (
-    <section className="px-4 sm:px-6 py-8 sm:py-12 text-white">
+    <section id="projects" className="px-4 sm:px-6 py-8 sm:py-12 text-white">
       <div className="text-center mb-8 sm:mb-12">
         <h2 className="text-2xl sm:text-3xl font-bold mb-2">Featured Projects</h2>
         <div className="h-1 w-12 bg-cyan-400 mx-auto mb-4 rounded-full" />

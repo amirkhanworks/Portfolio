@@ -4,7 +4,7 @@ import { Target, Award, TrendingUp, Users } from 'lucide-react';
 
 const ProfessionalSummary = memo(() => {
   return (
-    <section className="px-4 sm:px-6 py-8 sm:py-12 text-white">
+    <section id="about" className="px-4 sm:px-6 py-8 sm:py-12 text-white">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

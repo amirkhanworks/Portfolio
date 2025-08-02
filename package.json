@@ -18,7 +18,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "analyze": "npm run build && npx webpack-bundle-analyzer build/static/js/*.js"
+    "analyze": "npm run build && npx webpack-bundle-analyzer build/static/js/*.js",
+    "build:prod": "GENERATE_SOURCEMAP=false react-scripts build",
+    "lighthouse": "lighthouse http://localhost:3000 --output=json --output-path=./lighthouse-report.json"
   },
   "browserslist": {
     "production": [

@@ -7,20 +7,21 @@ import SidebarLayout from './components/SidebarLayout';
 import ProjectModal from './components/ProjectModal';
 import ExperienceSection from './components/ExperienceSection';
 import BlogSection from './BComponents/BlogSection';
-import TechStack from './BComponents/TechStack';
 import ClientsSection from './components/ClientsSection';
 import PhotoGallery from './components/PhotoGallery';
 import LoadingSpinner from './components/LoadingSpinner';
 import { usePerformance } from './hooks/usePerformance';
-import MetricsSection from './components/MetricsSection';
+
 import CertificationsSection from './components/CertificationsSection';
 import SkillsMatrix from './components/SkillsMatrix';
 import ContactSection from './components/ContactSection';
 import ProfessionalSummary from './components/ProfessionalSummary';
 import FeaturedProjects from './components/FeaturedProjects';
 import TestimonialsSection from './components/TestimonialsSection';
-import SpeakingSection from './components/SpeakingSection';
-import CallToActionSection from './components/CallToActionSection';
+
+import FloatingMobileNav from './components/FloatingMobileNav';
+import TableOfContents from './components/TableOfContents';
+import ReadingProgress from './components/ReadingProgress';
 
 // Lazy load client components
 const Surety = React.lazy(() => import('./Clients/Surety'));
@@ -69,20 +70,16 @@ function Home({ setSelectedProject }) {
 
   return (
     <>
-      <div className="max-w-4xl mx-auto space-y-8 sm:space-y-12">
+      <div className="space-y-8 sm:space-y-12">
         <ProfessionalSummary />
         <ExperienceSection />
-        <MetricsSection />
         <SkillsMatrix />
-        <TechStack />
         <CertificationsSection />
         <FeaturedProjects />
         <TestimonialsSection />
-        <SpeakingSection />
         <ClientsSection />
         <BlogSection />
         <PhotoGallery />
-        <CallToActionSection />
         <ContactSection />
       </div>
 
@@ -100,6 +97,8 @@ function App() {
   
   // Performance monitoring
   usePerformance();
+
+
 
   useEffect(() => {
     const updateCursor = (e) => {
@@ -128,6 +127,9 @@ function App() {
 
       <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
       <ScrollToTopButton />
+      <FloatingMobileNav />
+      <TableOfContents />
+      <ReadingProgress />
     </>
   );
 }

@@ -15,12 +15,12 @@ const ContactSection = memo(() => {
   };
 
   return (
-    <section className="px-4 sm:px-6 py-8 sm:py-12 text-white">
+    <section id="contact" className="px-4 sm:px-6 py-8 sm:py-12 text-white">
       <div className="text-center mb-8 sm:mb-12">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-2">Get In Touch</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold mb-2">Ready to Transform Your DevOps?</h2>
         <div className="h-1 w-12 bg-cyan-400 mx-auto mb-4 rounded-full" />
         <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto px-4">
-          Got a DevOps challenge that needs solving? Let's chat about how I can help your team level up their cloud game!
+          Let's discuss how I can help your team achieve faster deployments, lower costs, and better reliability. Whether you need cloud migration, CI/CD optimization, or team scaling - I've got you covered.
         </p>
       </div>
 
@@ -110,15 +110,14 @@ const ContactSection = memo(() => {
             </a>
           </div>
           
-                      <div className="mt-6 p-4 bg-cyan-900/20 border border-cyan-700 rounded-lg">
-              <p className="text-sm text-cyan-300 font-medium mb-2">What I'm Looking For:</p>
-              <ul className="text-xs text-gray-400 space-y-1">
-                <li>• Senior DevOps roles where I can make an impact</li>
-                <li>• Cloud architecture gigs that challenge me</li>
-                <li>• Leadership opportunities to grow teams</li>
-                <li>• Remote/hybrid work (I love my home office!)</li>
-              </ul>
+                                <div className="mt-6 p-4 bg-gradient-to-r from-cyan-900/20 to-blue-900/20 border border-cyan-700 rounded-lg">
+            <p className="text-sm text-cyan-300 font-medium mb-3">What I Bring to Your Team:</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-gray-400">
+              <div>• 6+ years DevOps experience</div>
+              <div>• Azure & Kubernetes expert</div>
+              <div>• 40% cost reduction track record</div>
             </div>
+          </div>
         </motion.div>
       </div>
     </section>
