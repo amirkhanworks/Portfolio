@@ -1,11 +1,9 @@
 import React, { useState, useCallback, memo } from 'react';
-import LTIMLogo from '../assets/Company Logo/LTIMindtree.png';
-import IFILogo from '../assets/Company Logo/IFI_Tech.png';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import LTIMLogo from '../assets/Company Logo/LTIMindtree.jpg';
+import IFILogo from '../assets/Company Logo/IFI_Tech.jpeg';
+import McKinseyLogo from '../assets/Company Logo/Mckinsey.png';
+import { ChevronDown, ChevronUp, Building2, Calendar, MapPin, Award, Target } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-// Placeholder for McKinsey logo - replace with actual logo file
-const McKinseyLogo = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iOCIgZmlsbD0iIzAwMDAwMCIvPgo8dGV4dCB4PSIyMCIgeT0iMjUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TWNLaW5zZXk8L3RleHQ+Cjwvc3ZnPgo=';
 
 const experience = [
   {
@@ -17,16 +15,16 @@ const experience = [
         title: 'Senior DevOps Engineer',
         duration: '2025 – Present',
         responsibilities: [
-          'Orchestrated enterprise cloud infrastructure and DevOps practices for McKinsey Digital.',
-          'Architected scalable CI/CD pipelines for enterprise applications.',
-          'Spearheaded cloud migration and modernization initiatives across global teams.',
-          'Established comprehensive security and compliance frameworks.'
+          'Contributing to Periscope - McKinsey\'s flagship data analytics and visualization platform.',
+          'Supporting cloud infrastructure and DevOps practices for enterprise-scale data solutions.',
+          'Working on CI/CD pipelines for data processing and analytics applications.',
+          'Collaborating with cross-functional teams on platform reliability and scalability.'
         ],
         achievements: [
-          'Accelerated deployment cycles by 60% through automated pipeline optimization.',
-          'Reduced cloud infrastructure costs by 40% through intelligent resource management.',
-          'Implemented zero-downtime deployment strategies for critical business applications.',
-          'Mentored junior engineers and established DevOps culture across multiple teams.'
+          'About Periscope: A comprehensive business intelligence platform that enables organizations to visualize, analyze, and act on their data.',
+          'The platform serves Fortune 500 companies with real-time analytics, interactive dashboards, and advanced data modeling capabilities.',
+          'Periscope empowers business leaders to make data-driven decisions through intuitive visualizations and collaborative analytics tools.',
+          'As part of the team, contributing to a platform that processes billions of data points and serves thousands of users globally.'
         ]
       }
     ]
@@ -119,104 +117,182 @@ const ExperienceSection = memo(() => {
   }, [openIndex]);
 
   return (
-    <div id="experience" className="px-4 sm:px-6 py-8 sm:py-12">
+    <div id="experience" className="px-4 sm:px-6 py-8 sm:py-12 text-white">
       <div className="text-center mb-8 sm:mb-12">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-2">Professional Experience</h2>
-        <div className="h-1 w-12 bg-cyan-400 mx-auto mb-4 rounded-full" />
-        <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto px-4">
-          Progressive career growth demonstrating technical leadership and strategic impact
-        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+            Professional Experience
+          </h2>
+          <div className="h-1 w-16 bg-gradient-to-r from-cyan-400 to-blue-400 mx-auto mb-4 rounded-full" />
+          <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto px-4">
+            Progressive career growth demonstrating technical leadership and strategic impact across enterprise environments
+          </p>
+        </motion.div>
       </div>
       
-      <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8">
+      <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8 px-2">
         {experience.map((exp, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="bg-[#111827] border border-cyan-700 rounded-xl p-4 sm:p-6 transition-all hover:border-cyan-500"
+            transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.1 }}
+            className="bg-gradient-to-br from-[#111827] to-[#0f1419] border border-cyan-700/50 rounded-2xl p-1 transition-all hover:border-cyan-500 hover:shadow-xl hover:shadow-cyan-500/10 group experience-card"
           >
-            <div
-              onClick={() => toggleIndex(index)}
-              className="cursor-pointer flex flex-col lg:flex-row lg:items-center lg:justify-between hover:bg-[#1a1f2e] transition rounded-lg px-3 sm:px-4 py-3"
-            >
-              <div className="flex items-center gap-4 sm:gap-6">
-                <img src={exp.logo} alt={exp.company} className="h-12 w-12 sm:h-16 sm:w-16 object-contain rounded-lg" />
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-1 truncate">{exp.company}</h3>
-                  <p className="text-cyan-400 text-sm font-medium">{exp.year}</p>
-                </div>
-              </div>
-              <div className="flex items-center justify-between w-full lg:w-auto mt-3 lg:mt-0">
-                <span className="text-xs sm:text-sm text-gray-400 lg:mr-6 truncate">{exp.roles[0].title}</span>
-                <div className="ml-auto">
-                  {openIndex === index ? <ChevronUp size={20} className="sm:w-6 sm:h-6" /> : <ChevronDown size={20} className="sm:w-6 sm:h-6" />}
-                </div>
-              </div>
-            </div>
-
-            <AnimatePresence>
-              {openIndex === index && (
-                <motion.div
-                  key="content"
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.4, ease: 'easeInOut' }}
-                  className="overflow-hidden mt-6 sm:mt-8 space-y-6 sm:space-y-8"
-                >
-                  {exp.roles.map((role, i) => (
-                    <div
-                      key={i}
-                      className="border-t border-cyan-700 pt-4 sm:pt-6"
-                    >
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 sm:mb-6">
-                        <h4 className="text-base sm:text-lg font-bold text-cyan-400">
-                          {role.title}
-                        </h4>
-                        <span className="text-xs sm:text-sm text-gray-400 bg-cyan-900/20 px-2 sm:px-3 py-1 rounded-full self-start sm:self-auto">
-                          {role.duration}
-                        </span>
-                      </div>
-                      
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-                        <div>
-                          <h5 className="font-semibold text-white mb-3 sm:mb-4 flex items-center gap-2">
-                            <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                            Key Responsibilities
-                          </h5>
-                          <ul className="space-y-2 sm:space-y-3 text-sm text-gray-300">
-                            {role.responsibilities.map((point, idx) => (
-                              <li key={idx} className="flex items-start gap-3">
-                                <span className="text-cyan-400 mt-2">•</span>
-                                <span>{point}</span>
-                              </li>
-                            ))}
-                          </ul>
+            <div className="bg-gradient-to-br from-[#111827] to-[#0f1419] rounded-2xl p-4 sm:p-6">
+              <div
+                onClick={() => toggleIndex(index)}
+                className="cursor-pointer transition-all duration-300 hover:bg-gradient-to-r hover:from-cyan-900/10 hover:to-blue-900/10 rounded-xl p-3 sm:p-4"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <div className="flex items-center gap-4 sm:gap-6">
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-blue-400/20 rounded-lg blur-sm group-hover:blur-md transition-all"></div>
+                      <img 
+                        src={exp.logo} 
+                        alt={exp.company} 
+                        className="relative h-14 w-14 sm:h-18 sm:w-18 object-contain rounded-lg bg-white/5 p-2 shadow-lg border border-white/10" 
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
+                        {exp.company}
+                      </h3>
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 text-sm text-gray-400 mb-2">
+                        <div className="flex items-center gap-1">
+                          <Calendar size={14} />
+                          <span className="font-medium">{exp.year}</span>
                         </div>
-                        
-                        <div>
-                          <h5 className="font-semibold text-white mb-3 sm:mb-4 flex items-center gap-2">
-                            <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                            Key Achievements
-                          </h5>
-                          <ul className="space-y-2 sm:space-y-3 text-sm text-gray-300">
-                            {role.achievements.map((point, idx) => (
-                              <li key={idx} className="flex items-start gap-3">
-                                <span className="text-green-400 mt-2">•</span>
-                                <span>{point}</span>
-                              </li>
-                            ))}
-                          </ul>
+                        <div className="flex items-center gap-1">
+                          <Building2 size={14} />
+                          <span>{exp.roles[0].title}</span>
                         </div>
                       </div>
                     </div>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
+                  </div>
+                  <div className="flex items-center justify-center sm:justify-end mt-4 sm:mt-0">
+                    <div className="flex items-center gap-2 text-cyan-400 group-hover:text-cyan-300 transition-colors">
+                      <span className="text-sm font-medium">
+                        {openIndex === index ? 'Show Less' : 'Show More'}
+                      </span>
+                      <motion.div
+                        animate={{ rotate: openIndex === index ? 180 : 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="p-1 rounded-full bg-cyan-900/30 group-hover:bg-cyan-900/50"
+                      >
+                        <ChevronDown size={18} />
+                      </motion.div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <AnimatePresence>
+                {openIndex === index && (
+                  <motion.div
+                    key="content"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: 'easeInOut' }}
+                    className="overflow-hidden mt-6 sm:mt-8"
+                  >
+                    <div className="border-t border-gradient-to-r from-cyan-700/50 via-cyan-700 to-cyan-700/50 pt-6 sm:pt-8">
+                      {exp.roles.map((role, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: i * 0.1 + 0.2, duration: 0.5 }}
+                          className="mb-6 sm:mb-8"
+                        >
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+                            <div className="flex items-center gap-3">
+                              <div className="p-2 bg-gradient-to-br from-cyan-900/50 to-blue-900/50 rounded-lg">
+                                <Target size={16} className="text-cyan-400" />
+                              </div>
+                              <h4 className="text-lg sm:text-xl font-bold text-white">
+                                {role.title}
+                              </h4>
+                            </div>
+                            <div className="flex items-center gap-2 bg-gradient-to-r from-cyan-900/30 to-blue-900/30 px-3 py-1.5 rounded-full border border-cyan-700/50">
+                              <Calendar size={14} className="text-cyan-400" />
+                              <span className="text-xs sm:text-sm text-cyan-300 font-medium">
+                                {role.duration}
+                              </span>
+                            </div>
+                          </div>
+                          
+                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+                            <motion.div
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: i * 0.1 + 0.3, duration: 0.5 }}
+                              className="bg-gradient-to-br from-gray-800/30 to-gray-900/30 rounded-xl p-4 sm:p-6 border border-gray-700/50"
+                            >
+                              <h5 className="font-semibold text-white mb-4 flex items-center gap-3">
+                                <div className="p-1.5 bg-cyan-900/50 rounded-lg">
+                                  <Target size={14} className="text-cyan-400" />
+                                </div>
+                                <span>Key Responsibilities</span>
+                              </h5>
+                              <ul className="space-y-3 text-sm text-gray-300">
+                                {role.responsibilities.map((point, idx) => (
+                                  <motion.li 
+                                    key={idx} 
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: i * 0.1 + 0.4 + idx * 0.1, duration: 0.3 }}
+                                    className="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-700/30 transition-colors"
+                                  >
+                                    <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
+                                    <span className="leading-relaxed">{point}</span>
+                                  </motion.li>
+                                ))}
+                              </ul>
+                            </motion.div>
+                            
+                            <motion.div
+                              initial={{ opacity: 0, x: 20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: i * 0.1 + 0.3, duration: 0.5 }}
+                              className="bg-gradient-to-br from-gray-800/30 to-gray-900/30 rounded-xl p-4 sm:p-6 border border-gray-700/50"
+                            >
+                              <h5 className="font-semibold text-white mb-4 flex items-center gap-3">
+                                <div className="p-1.5 bg-green-900/50 rounded-lg">
+                                  <Award size={14} className="text-green-400" />
+                                </div>
+                                <span>{exp.company === 'McKinsey & Company' ? 'Product Information' : 'Key Achievements'}</span>
+                              </h5>
+                              <ul className="space-y-3 text-sm text-gray-300">
+                                {role.achievements.map((point, idx) => (
+                                  <motion.li 
+                                    key={idx} 
+                                    initial={{ opacity: 0, x: 10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: i * 0.1 + 0.4 + idx * 0.1, duration: 0.3 }}
+                                    className="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-700/30 transition-colors"
+                                  >
+                                    <div className="w-1.5 h-1.5 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+                                    <span className="leading-relaxed">{point}</span>
+                                  </motion.li>
+                                ))}
+                              </ul>
+                            </motion.div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </motion.div>
         ))}
       </div>

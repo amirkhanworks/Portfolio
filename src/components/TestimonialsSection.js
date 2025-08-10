@@ -75,7 +75,7 @@ const TestimonialsSection = memo(() => {
             <Quote className="text-cyan-400/20 absolute top-4 right-4" size={24} />
             
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-cyan-600 rounded-full flex items-center justify-center text-white font-semibold">
+              <div className="w-12 h-12 bg-cyan-600 rounded-full flex items-center justify-center text-white font-semibold flex-shrink-0">
                 {testimonial.avatar}
               </div>
               <div>

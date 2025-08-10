@@ -27,6 +27,48 @@ nav {
   #about {
     margin-top: 1rem; /* Reduced from 3.5rem */
   }
+  
+  #experience {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  /* Improve mobile text readability */
+  .text-xl {
+    font-size: 1.125rem; /* 18px */
+  }
+  
+  .text-2xl {
+    font-size: 1.25rem; /* 20px */
+  }
+  
+  /* Better mobile spacing for experience cards */
+  .experience-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Improve mobile button spacing */
+  .mobile-nav-btn {
+    padding: 0.75rem 1rem;
+    margin: 0.25rem;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media (max-width: 600px) {
+  .text-3xl {
+    font-size: 1.5rem; /* 24px */
+  }
+  
+  .text-4xl {
+    font-size: 1.75rem; /* 28px */
+  }
+  
+  /* Tighter spacing on very small screens */
+  #experience {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
 }
 
 /* Radial animation behind cursor - optimized for performance */

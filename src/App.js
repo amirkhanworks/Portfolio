@@ -19,8 +19,8 @@ import ProfessionalSummary from './components/ProfessionalSummary';
 import FeaturedProjects from './components/FeaturedProjects';
 import TestimonialsSection from './components/TestimonialsSection';
 
-import FloatingMobileNav from './components/FloatingMobileNav';
-import TableOfContents from './components/TableOfContents';
+
+
 import ReadingProgress from './components/ReadingProgress';
 
 // Lazy load client components
@@ -75,11 +75,14 @@ function Home({ setSelectedProject }) {
         <ExperienceSection />
         <SkillsMatrix />
         <CertificationsSection />
-        <FeaturedProjects />
-        <TestimonialsSection />
+        {/* <FeaturedProjects /> */}
         <ClientsSection />
-        <BlogSection />
         <PhotoGallery />
+        {/* Blog Section - Mobile Only */}
+        <div className="block lg:hidden">
+          <BlogSection />
+        </div>
+        <TestimonialsSection />
         <ContactSection />
       </div>
 
@@ -127,8 +130,6 @@ function App() {
 
       <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
       <ScrollToTopButton />
-      <FloatingMobileNav />
-      <TableOfContents />
       <ReadingProgress />
     </>
   );

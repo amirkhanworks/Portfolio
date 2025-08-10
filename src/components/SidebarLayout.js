@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaLinkedin, FaGithub, FaArrowLeft, FaEnvelope } from 'react-icons/fa';
 import profilePic from '../assets/Profile photo/Me.jpg';
+import CompactBlogSection from './CompactBlogSection';
 
 const SidebarLayout = ({ children, showBack }) => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const SidebarLayout = ({ children, showBack }) => {
   return (
     <div className="flex flex-col lg:flex-row min-h-screen relative z-10 text-white font-sans">
       {/* Sidebar */}
-      <aside className="lg:w-[30%] w-full h-auto lg:h-screen lg:sticky lg:top-0 z-20 bg-[#0e0f23]/80 backdrop-blur p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center">
+      <aside className="lg:w-[30%] w-full h-auto lg:h-screen lg:sticky lg:top-0 z-20 bg-[#0e0f23]/80 backdrop-blur p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center min-h-[50vh] lg:min-h-screen">
         <img
           src={profilePic}
           alt="Akash Roy"
@@ -66,12 +67,17 @@ const SidebarLayout = ({ children, showBack }) => {
         <div className="w-full h-[2px] bg-cyan-500 my-3 block lg:hidden" />
 
         {/* Mobile Navigation */}
-        <div className="flex lg:hidden flex-wrap justify-center gap-3 sm:gap-4 text-xs sm:text-sm text-white">
-          <a href="#about" className="hover:text-accent">ABOUT</a>
-          <a href="#techstack" className="hover:text-accent">TECH</a>
-          <a href="#experience" className="hover:text-accent">EXPERIENCE</a>
-          <a href="#clients" className="hover:text-accent">CLIENTS</a>
-          <a href="#blogs" className="hover:text-accent">BLOGS</a>
+        <div className="flex lg:hidden flex-wrap justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-white">
+          <a href="#about" className="hover:text-accent px-2 py-1 rounded transition-colors mobile-nav-btn">ABOUT</a>
+          <a href="#techstack" className="hover:text-accent px-2 py-1 rounded transition-colors mobile-nav-btn">TECH</a>
+          <a href="#experience" className="hover:text-accent px-2 py-1 rounded transition-colors mobile-nav-btn">EXPERIENCE</a>
+          <a href="#clients" className="hover:text-accent px-2 py-1 rounded transition-colors mobile-nav-btn">CLIENTS</a>
+          <a href="#blogs" className="hover:text-accent px-2 py-1 rounded transition-colors mobile-nav-btn">BLOGS</a>
+        </div>
+
+        {/* Compact Blog Section - Desktop Only */}
+        <div className="hidden lg:block w-full">
+          <CompactBlogSection />
         </div>
       </aside>
 
@@ -81,11 +87,10 @@ const SidebarLayout = ({ children, showBack }) => {
         <a href="#techstack" className="text-gray-300 hover:text-accent">TECH</a>
         <a href="#experience" className="text-gray-300 hover:text-accent">EXPERIENCE</a>
         <a href="#clients" className="text-gray-300 hover:text-accent">CLIENTS</a>
-        <a href="#blogs" className="text-gray-300 hover:text-accent">BLOGS</a>
       </nav>
 
       {/* Main Content */}
-      <main className="relative lg:w-[70%] w-full px-4 sm:px-6 md:px-12 lg:pt-24 pb-10 bg-[#0e0f23]/80 backdrop-blur z-10 overflow-hidden">
+      <main className="relative lg:w-[70%] w-full px-2 sm:px-4 md:px-6 lg:px-12 lg:pt-24 pb-10 bg-[#0e0f23]/80 backdrop-blur z-10 overflow-hidden">
         {showBack && (
           <div className="w-full px-4 md:px-6 lg:px-12 pt-6">
             <button

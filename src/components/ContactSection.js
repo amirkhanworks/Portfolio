@@ -112,10 +112,31 @@ const ContactSection = memo(() => {
           
                                 <div className="mt-6 p-4 bg-gradient-to-r from-cyan-900/20 to-blue-900/20 border border-cyan-700 rounded-lg">
             <p className="text-sm text-cyan-300 font-medium mb-3">What I Bring to Your Team:</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-gray-400">
-              <div>• 6+ years DevOps experience</div>
-              <div>• Azure & Kubernetes expert</div>
-              <div>• 40% cost reduction track record</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-gray-400">
+              <div className="flex items-start gap-2">
+                <span className="text-cyan-400 mt-0.5">•</span>
+                <span><strong className="text-cyan-300">6+ years</strong> DevOps & Cloud Engineering experience</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-cyan-400 mt-0.5">•</span>
+                <span><strong className="text-cyan-300">Azure & Kubernetes</strong> certified expert</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-cyan-400 mt-0.5">•</span>
+                <span><strong className="text-cyan-300">40% cost reduction</strong> through infrastructure optimization</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-cyan-400 mt-0.5">•</span>
+                <span><strong className="text-cyan-300">10,000+ users</strong> supported across global platforms</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-cyan-400 mt-0.5">•</span>
+                <span><strong className="text-cyan-300">99.9% uptime</strong> achieved for critical systems</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-cyan-400 mt-0.5">•</span>
+                <span><strong className="text-cyan-300">300+ engineers</strong> trained in DevOps practices</span>
+              </div>
             </div>
           </div>
         </motion.div>

@@ -72,14 +72,14 @@ const ClientsSection = memo(() => {
             >
               <h3 className="text-lg sm:text-xl font-semibold text-cyan-400 mb-4">{industry.name}</h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-                {industry.clients.map((client, index) => (
-                  <motion.div
-                    key={client.name}
+              {industry.clients.map((client, index) => (
+                <motion.div
+                  key={client.name}
                     className="bg-white rounded-lg p-2 sm:p-3 cursor-pointer hover:shadow-lg transition-all duration-300 hover:scale-105"
-                    onClick={() => navigate(client.link)}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                  onClick={() => navigate(client.link)}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                     transition={{ delay: (industryIndex * 0.1) + (index * 0.05), duration: 0.4 }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -90,13 +90,13 @@ const ClientsSection = memo(() => {
                       <img src={client.logo} alt={client.name} className="h-6 sm:h-8 object-contain mb-1" />
                       <span className="text-xs sm:text-sm text-center text-gray-800 font-medium leading-tight">{client.name}</span>
                     </div>
-                  </motion.div>
-                ))}
-              </div>
+                </motion.div>
+              ))}
+            </div>
             </motion.div>
-          ))}
-        </div>
+        ))}
       </div>
+    </div>
     </>
   );
 });

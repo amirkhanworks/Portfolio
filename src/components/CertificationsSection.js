@@ -4,42 +4,26 @@ import { Award, Calendar, ExternalLink } from 'lucide-react';
 
 const certifications = [
   {
-    name: "Azure Solutions Architect Expert",
+    name: "Azure Fundamentals",
     issuer: "Microsoft",
     date: "2024",
-    credentialId: "AZ-305",
+    credentialId: "AZ-900",
     status: "Active",
     link: "#"
   },
   {
-    name: "Azure DevOps Engineer Expert",
+    name: "Microsoft Security, Compliance, and Identity Fundamentals",
     issuer: "Microsoft",
-    date: "2023",
-    credentialId: "AZ-400",
+    date: "2024",
+    credentialId: "SC-900",
     status: "Active",
     link: "#"
   },
   {
-    name: "Kubernetes Administrator",
-    issuer: "CNCF",
-    date: "2023",
-    credentialId: "CKA",
-    status: "Active",
-    link: "#"
-  },
-  {
-    name: "Terraform Associate",
-    issuer: "HashiCorp",
-    date: "2022",
-    credentialId: "HCTA",
-    status: "Active",
-    link: "#"
-  },
-  {
-    name: "AWS Solutions Architect Associate",
-    issuer: "Amazon Web Services",
-    date: "2021",
-    credentialId: "SAA-C03",
+    name: "GitHub Copilot Fundamentals",
+    issuer: "GitHub",
+    date: "2024",
+    credentialId: "GCF",
     status: "Active",
     link: "#"
   }
