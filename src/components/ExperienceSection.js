@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, memo } from 'react';
 import LTIMLogo from '../assets/Company Logo/LTIMindtree.png';
 import IFILogo from '../assets/Company Logo/IFI_Tech.png';
 import McKinseyLogo from '../assets/Company Logo/McKinsey.jpg';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Placeholder for McKinsey logo - replace with actual logo file
+const McKinseyLogo = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iOCIgZmlsbD0iIzAwMDAwMCIvPgo8dGV4dCB4PSIyMCIgeT0iMjUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TWNLaW5zZXk8L3RleHQ+Cjwvc3ZnPgo=';
+
 const experience = [
   {
     company: 'McKinsey & Company',
     logo: McKinseyLogo,
+<<<<<<< HEAD
     year: 'Jul 2025 – Present',
     roles: [
       {
@@ -20,6 +24,24 @@ const experience = [
         ],
         achievements: [
           'Completed PoC for AKS-based architecture within 1 week.',
+=======
+    year: '2025 – Present',
+    roles: [
+      {
+        title: 'Senior DevOps Engineer',
+        duration: '2025 – Present',
+        responsibilities: [
+          'Lead cloud infrastructure and DevOps practices for McKinsey Digital.',
+          'Design and implement scalable CI/CD pipelines for enterprise applications.',
+          'Drive cloud migration and modernization initiatives across global teams.',
+          'Establish best practices for security, compliance, and operational excellence.'
+        ],
+        achievements: [
+          'Accelerated deployment cycles by 60% through automated pipeline optimization.',
+          'Reduced cloud infrastructure costs by 40% through intelligent resource management.',
+          'Implemented zero-downtime deployment strategies for critical business applications.',
+          'Mentored junior engineers and established DevOps culture across multiple teams.'
+>>>>>>> abf4e50 (Optimized the code using Cursor AI)
         ]
       }
     ]
@@ -27,11 +49,11 @@ const experience = [
   {
     company: 'LTIMindtree',
     logo: LTIMLogo,
-    year: '2023 – Present',
+    year: '2023 – 2025',
     roles: [
       {
         title: 'Senior Product Engineer',
-        duration: '2023 – Present',
+        duration: '2023 – 2024',
         responsibilities: [
           'Led Azure PaaS and container modernization across enterprise apps.',
           'Drove DevSecOps automation with SonarQube, ZAP, and GitHub Actions.',
@@ -104,12 +126,12 @@ const experience = [
   }
 ];
 
-const ExperienceSection = () => {
+const ExperienceSection = memo(() => {
   const [openIndex, setOpenIndex] = useState(null);
 
-  const toggleIndex = (index) => {
+  const toggleIndex = useCallback((index) => {
     setOpenIndex(openIndex === index ? null : index);
-  };
+  }, [openIndex]);
 
   return (
     <div id="experience" className="px-6 py-1">
@@ -187,6 +209,6 @@ const ExperienceSection = () => {
       </div>
     </div>
   );
-};
+});
 
 export default ExperienceSection;

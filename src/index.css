@@ -24,7 +24,7 @@ nav {
   }
 }
 
-/* Radial animation behind cursor */
+/* Radial animation behind cursor - optimized for performance */
 #radial-overlay {
   position: fixed;
   inset: 0;
@@ -37,6 +37,8 @@ nav {
     rgba(56, 189, 248, 0.05) 60%,
     transparent 80%
   );
+  transform: translateZ(0); /* Hardware acceleration */
+  will-change: transform;
   transition: background 0.05s ease;
 }
 
@@ -46,11 +48,12 @@ nav {
   inset: 0;
   background: radial-gradient(
     400px circle at var(--x) var(--y),
-    rgba(56, 189, 248, 0.25),   /* Bright core (Sky-500) */
+    rgba(56, 189, 248, 0.25),
     rgba(56, 189, 248, 0.15) 30%,
     rgba(56, 189, 248, 0.05) 60%,
     transparent 80%
   );
+  transform: translateZ(0);
 }
 
 .client-back-btn {
@@ -71,6 +74,20 @@ nav {
   .client-back-btn {
     top: 8rem; /* pushes it below the fixed navbar */
     left: 2.5rem; /* aligns with content area */
+  }
+}
+
+/* Image optimization */
+img {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

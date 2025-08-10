@@ -56,7 +56,7 @@ const techGroups = [
   }
 ];
 
-const TechStack = () => {
+const TechStack = React.memo(() => {
   return (
     <div id="techstack" className="px-6 py-9 bg-[#0f172a] rounded-xl shadow-inner border border-white/10">
       <h2 className="text-2xl font-bold mb-12 text-accent mb-8">Technologies & Tools</h2>
@@ -80,6 +80,6 @@ const TechStack = () => {
       </div>
     </div>
   );
-};
+});
 
 export default TechStack;
