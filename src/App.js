@@ -6,7 +6,7 @@ import { FaChevronUp } from 'react-icons/fa';
 import SidebarLayout from './components/SidebarLayout';
 import ProjectModal from './components/ProjectModal';
 import ExperienceSection from './components/ExperienceSection';
-import BlogSection from './BComponents/BlogSection';
+const BlogSection = React.lazy(() => import('./BComponents/BlogSection'));
 import ClientsSection from './components/ClientsSection';
 import PhotoGallery from './components/PhotoGallery';
 import LoadingSpinner from './components/LoadingSpinner';
@@ -80,7 +80,9 @@ function Home({ setSelectedProject }) {
         <PhotoGallery />
         {/* Blog Section - Mobile Only */}
         <div className="block lg:hidden">
-          <BlogSection />
+          <Suspense fallback={<LoadingSpinner />}>
+            <BlogSection />
+          </Suspense>
         </div>
         <TestimonialsSection />
         <ContactSection />

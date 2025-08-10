@@ -33,7 +33,7 @@ const CompactBlogSection = () => {
     >
       <div className="flex items-center gap-2 mb-4">
         <BookOpen size={16} className="text-cyan-400" />
-        <h3 className="text-sm font-semibold text-white">Latest Blogs</h3>
+        <h3 className="text-sm font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Latest Blogs</h3>
       </div>
       
       {loading ? (

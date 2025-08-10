@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import LazyImage from './LazyImage';
 
 import suretyLogo from '../assets/Clients/Surety.png';
 import cabLogo from '../assets/Clients/CAB.png';
@@ -87,7 +88,7 @@ const ClientsSection = memo(() => {
                     exit={{ scale: 0.95 }}
                   >
                     <div className="flex flex-col items-center justify-center h-16 sm:h-20">
-                      <img src={client.logo} alt={client.name} className="h-6 sm:h-8 object-contain mb-1" />
+                      <LazyImage src={client.logo} alt={client.name} className="h-6 sm:h-8 object-contain mb-1" />
                       <span className="text-xs sm:text-sm text-center text-gray-800 font-medium leading-tight">{client.name}</span>
                     </div>
                 </motion.div>

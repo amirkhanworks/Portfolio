@@ -1,20 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaLinkedin, FaGithub, FaArrowLeft, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaArrowLeft, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa';
 import profilePic from '../assets/Profile photo/Me.jpg';
 import CompactBlogSection from './CompactBlogSection';
 
 const SidebarLayout = ({ children, showBack }) => {
   const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="flex flex-col lg:flex-row min-h-screen relative z-10 text-white font-sans">
+      {/* Mobile Header */}
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-[#0e0f23]/90 backdrop-blur border-b border-white/10">
+        <div className="flex items-center justify-between px-4 py-3">
+          <a href="#about" className="text-sm font-semibold text-white">Akash <span className="text-accent">Roy</span></a>
+          <button
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 rounded-md text-cyan-300 hover:text-white hover:bg-white/5 transition"
+          >
+            {mobileMenuOpen ? <FaTimes size={18} /> : <FaBars size={18} />}
+          </button>
+        </div>
+        {mobileMenuOpen && (
+          <nav className="px-4 pb-3">
+            <div className="grid grid-cols-3 gap-2 text-xs">
+              <a onClick={() => setMobileMenuOpen(false)} href="#about" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">ABOUT</a>
+              <a onClick={() => setMobileMenuOpen(false)} href="#experience" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">EXP</a>
+              <a onClick={() => setMobileMenuOpen(false)} href="#skills" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">SKILLS</a>
+              <a onClick={() => setMobileMenuOpen(false)} href="#certifications" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">CERTS</a>
+              <a onClick={() => setMobileMenuOpen(false)} href="#clients" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">CLIENTS</a>
+              <a onClick={() => setMobileMenuOpen(false)} href="#blogs" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">BLOGS</a>
+              <a onClick={() => setMobileMenuOpen(false)} href="#testimonials" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center col-span-2">TESTIMONIALS</a>
+              <a onClick={() => setMobileMenuOpen(false)} href="#contact" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">CONTACT</a>
+            </div>
+          </nav>
+        )}
+      </header>
       {/* Sidebar */}
-      <aside className="lg:w-[30%] w-full h-auto lg:h-screen lg:sticky lg:top-0 z-20 bg-[#0e0f23]/80 backdrop-blur p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center min-h-[50vh] lg:min-h-screen">
+      <aside className="lg:w-[30%] w-full h-auto lg:h-screen lg:sticky lg:top-0 z-20 bg-[#0e0f23]/80 backdrop-blur p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center min-h-[50vh] lg:min-h-screen mt-14 lg:mt-0">
         <img
           src={profilePic}
           alt="Akash Roy"
           className="rounded-full w-32 h-32 sm:w-44 sm:h-44 object-cover mb-4 sm:mb-6 border-4 border-accent shadow-lg animate-float"
+          decoding="async"
+          fetchpriority="high"
+          loading="eager"
         />
 
         <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-2">
@@ -63,17 +94,8 @@ const SidebarLayout = ({ children, showBack }) => {
           </a>
         </div>
 
-        {/* Divider line - visible on mobile only */}
-        <div className="w-full h-[2px] bg-cyan-500 my-3 block lg:hidden" />
-
-        {/* Mobile Navigation */}
-        <div className="flex lg:hidden flex-wrap justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-white">
-          <a href="#about" className="hover:text-accent px-2 py-1 rounded transition-colors mobile-nav-btn">ABOUT</a>
-          <a href="#techstack" className="hover:text-accent px-2 py-1 rounded transition-colors mobile-nav-btn">TECH</a>
-          <a href="#experience" className="hover:text-accent px-2 py-1 rounded transition-colors mobile-nav-btn">EXPERIENCE</a>
-          <a href="#clients" className="hover:text-accent px-2 py-1 rounded transition-colors mobile-nav-btn">CLIENTS</a>
-          <a href="#blogs" className="hover:text-accent px-2 py-1 rounded transition-colors mobile-nav-btn">BLOGS</a>
-        </div>
+        {/* Divider line - hidden since mobile nav moved to header */}
+        <div className="hidden" />
 
         {/* Compact Blog Section - Desktop Only */}
         <div className="hidden lg:block w-full">
@@ -82,11 +104,14 @@ const SidebarLayout = ({ children, showBack }) => {
       </aside>
 
       {/* Desktop Nav */}
-      <nav className="hidden lg:flex fixed top-0 right-0 w-[70%] z-50 bg-transparent backdrop-blur-md px-6 md:px-12 py-4 justify-end space-x-6 text-sm font-medium border-b border-white/10">
+      <nav className="hidden lg:flex fixed top-0 right-0 w-[70%] z-50 bg-transparent backdrop-blur-md px-6 md:px-12 py-4 justify-end space-x-4 text-sm font-medium border-b border-white/10">
         <a href="#about" className="text-gray-300 hover:text-accent">ABOUT</a>
-        <a href="#techstack" className="text-gray-300 hover:text-accent">TECH</a>
         <a href="#experience" className="text-gray-300 hover:text-accent">EXPERIENCE</a>
+        <a href="#skills" className="text-gray-300 hover:text-accent">SKILLS</a>
+        <a href="#certifications" className="text-gray-300 hover:text-accent">CERTS</a>
         <a href="#clients" className="text-gray-300 hover:text-accent">CLIENTS</a>
+        <a href="#testimonials" className="text-gray-300 hover:text-accent">TESTIMONIALS</a>
+        <a href="#contact" className="text-gray-300 hover:text-accent">CONTACT</a>
       </nav>
 
       {/* Main Content */}

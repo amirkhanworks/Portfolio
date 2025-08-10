@@ -50,8 +50,8 @@ const ContactSection = memo(() => {
               <Phone className="text-cyan-400" size={20} />
               <div>
                 <p className="text-sm text-gray-400">Phone</p>
-                <a href="tel:+91-9876543210" className="text-white hover:text-cyan-400 transition-colors">
-                  +91 98765 43210
+                <a href="tel:+919930056848" className="text-white hover:text-cyan-400 transition-colors">
+                  +91 99300 56848
                 </a>
               </div>
             </div>
@@ -116,10 +116,6 @@ const ContactSection = memo(() => {
               <div className="flex items-start gap-2">
                 <span className="text-cyan-400 mt-0.5">•</span>
                 <span><strong className="text-cyan-300">6+ years</strong> DevOps & Cloud Engineering experience</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-cyan-400 mt-0.5">•</span>
-                <span><strong className="text-cyan-300">Azure & Kubernetes</strong> certified expert</span>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-cyan-400 mt-0.5">•</span>

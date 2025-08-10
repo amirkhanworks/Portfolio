@@ -1,9 +1,10 @@
 import React, { useState, useCallback, memo } from 'react';
 import LTIMLogo from '../assets/Company Logo/LTIMindtree.jpg';
 import IFILogo from '../assets/Company Logo/IFI_Tech.jpeg';
-import McKinseyLogo from '../assets/Company Logo/Mckinsey.png';
+import McKinseyLogo from '../assets/Company Logo/Mckinsey.jpg';
 import { ChevronDown, ChevronUp, Building2, Calendar, MapPin, Award, Target } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import LazyImage from './LazyImage';
 
 const experience = [
   {
@@ -154,7 +155,7 @@ const ExperienceSection = memo(() => {
                   <div className="flex items-center gap-4 sm:gap-6">
                     <div className="relative">
                       <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-blue-400/20 rounded-lg blur-sm group-hover:blur-md transition-all"></div>
-                      <img 
+                      <LazyImage 
                         src={exp.logo} 
                         alt={exp.company} 
                         className="relative h-14 w-14 sm:h-18 sm:w-18 object-contain rounded-lg bg-white/5 p-2 shadow-lg border border-white/10" 

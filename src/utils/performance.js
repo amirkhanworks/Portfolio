@@ -41,8 +41,9 @@ export const createIntersectionObserver = (callback, options = {}) => {
 export const preloadCriticalResources = () => {
   const criticalImages = [
     '/src/assets/Profile%20photo/Me.jpg',
-    '/src/assets/Company%20Logo/LTIMindtree.png',
-    '/src/assets/Company%20Logo/IFI_Tech.png'
+    '/src/assets/Company%20Logo/LTIMindtree.jpg',
+    '/src/assets/Company%20Logo/IFI_Tech.jpeg',
+    '/src/assets/Company%20Logo/Mckinsey.jpg'
   ];
 
   criticalImages.forEach(src => {
