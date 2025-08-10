@@ -58,8 +58,8 @@ const techGroups = [
 
 const TechStack = React.memo(() => {
   return (
-    <div id="techstack" className="px-6 py-9 bg-[#0f172a] rounded-xl shadow-inner border border-white/10">
-      <h2 className="text-2xl font-bold mb-12 text-accent mb-8">Technologies & Tools</h2>
+    <div id="tech" className="px-6 py-9 bg-[#0f172a] rounded-xl shadow-inner border border-white/10">
+              <h2 className="text-2xl font-bold mb-12 text-accent mb-8">Technical Expertise</h2>
       <div className="space-y-12">
         {techGroups.map((group) => (
           <div key={group.heading}>

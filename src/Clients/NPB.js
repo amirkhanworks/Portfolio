@@ -1,19 +1,43 @@
 import React from 'react';
+import ClientPage from '../components/ClientPage';
 
-const NPB = () => (
-  <div className="max-w-4xl mx-auto p-6 text-white">
-    <h1 className="text-3xl font-bold text-accent mb-4">NPB Consultants – HIPAA Compliant VDI</h1>
-    
-    <p className="mb-4"><strong>Project Context:</strong> Delivered a HIPAA-compliant Azure Virtual Desktop solution to support remote healthcare operations while meeting regulatory mandates.</p>
-    
-    <p className="mb-4"><strong>Tech Stack:</strong> Azure Virtual Desktop, Azure Firewall, Microsoft Defender for Cloud, Azure DevOps</p>
-    
-    <p className="mb-4"><strong>My Contribution:</strong> Designed secure VDI architecture. Implemented conditional access, encryption policies, and governance using Azure Policy and Defender.</p>
-    
-    <p className="mb-4"><strong>Challenges & Outcomes:</strong> Met all HIPAA compliance benchmarks while reducing VDI provisioning time by 40%. Enabled 24/7 secure clinician access to data.</p>
-    
-    <p><strong>Awards/Recognition:</strong> Commended by client CTO for deploying a secure and scalable remote work solution.</p>
-  </div>
+const techStack = [
+  'Azure DevOps',
+  'Terraform',
+  'Microsoft Azure',
+  'Azure SQL Database',
+  'Azure App Services',
+  'Azure Key Vault',
+  'Azure Monitor',
+  'Power BI',
+  'Azure Active Directory',
+  'CI/CD Pipelines'
+];
+
+const bullets = [
+  'Designed and implemented cloud-native architecture for banking applications',
+  'Configured Azure SQL Database with high availability and disaster recovery',
+  'Implemented secure authentication using Azure Active Directory',
+  'Set up comprehensive monitoring and alerting with Azure Monitor',
+  'Automated deployment pipelines using Azure DevOps and Terraform',
+  'Integrated Power BI for real-time analytics and reporting',
+  'Reduced infrastructure costs by 45% through cloud optimization'
+];
+
+const NPB = () => {
+  return (
+    <ClientPage
+      title="NPB – Digital Banking Platform"
+      techStack={techStack}
+      bullets={bullets}
+      recognition="Successfully delivered a modern digital banking platform that improved customer experience and operational efficiency. Received recognition for implementing robust security measures and achieving 99.9% uptime."
+      projectSummary="Modernized legacy banking systems by implementing a cloud-native digital banking platform on Azure. Delivered secure, scalable infrastructure with real-time analytics and automated deployment capabilities."
+      duration="14 months"
+      teamSize="7-person team"
+      impact="45% cost reduction"
+      projectType="Digital Banking Platform"
+    />
 );
+};
 
 export default NPB;
