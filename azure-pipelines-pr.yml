@@ -12,12 +12,14 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  sonarProjectKey: 'roydevops0145_devops-portfolio'
+  sonarProjectKey: 'roydevops0145_DevOps-Portfolio'
   sonarProjectName: 'DevOps Portfolio'
   sonarOrganization: 'roydevops0145'
   sonarHostUrl: 'https://sonarcloud.io'
 
 steps:
+- checkout: self
+  fetchDepth: 0
 - task: NodeTool@0
   inputs:
     versionSpec: '18.x'

@@ -17,9 +17,9 @@ pool:
 variables:
   buildConfiguration: 'Release'
   reactAppBuildDir: 'build'
-  sonarProjectKey: 'roydevops0145_devops-portfolio'  # Your actual SonarCloud project key
+  sonarProjectKey: 'roydevops0145_DevOps-Portfolio'  # Exact match with SonarCloud
   sonarProjectName: 'DevOps Portfolio'
-  sonarOrganization: 'roydevops0145'  # Your SonarCloud organization
+  sonarOrganization: 'roydevops0145'
   sonarHostUrl: 'https://sonarcloud.io'
 
 stages:
@@ -29,6 +29,8 @@ stages:
   - job: BuildJob
     displayName: 'Build Application'
     steps:
+    - checkout: self
+      fetchDepth: 0
     - task: NodeTool@0
       inputs:
         versionSpec: '18.x'
