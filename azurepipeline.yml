@@ -100,19 +100,15 @@ stages:
   dependsOn: Build
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   jobs:
-  - deployment: DeployJob
+  - job: DeployJob
     displayName: 'Deploy to Azure Web App'
-    environment: 'Production'
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - download: current
-            artifact: react-portfolio
-          - task: AzureWebApp@1
-            inputs:
-              azureSubscription: 'Akash-DevOps-SvC'
-              appType: 'webAppLinux'
-              appName: 'akash-portfolio'
-              package: '$(Pipeline.Workspace)/react-portfolio/build.zip'
-            displayName: 'Deploy to Azure Web App'
+    steps:
+    - download: current
+      artifact: react-portfolio
+    - task: AzureWebApp@1
+      inputs:
+        azureSubscription: 'Akash-DevOps-SvC'
+        appType: 'webAppLinux'
+        appName: 'akash-portfolio'
+        package: '$(Pipeline.Workspace)/react-portfolio/build.zip'
+      displayName: 'Deploy to Azure Web App'
