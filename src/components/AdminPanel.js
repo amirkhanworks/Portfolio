@@ -20,18 +20,6 @@ const AdminPanel = () => {
 
   // Simple password protection (in production, use proper authentication)
   const ADMIN_PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD || 'akash2025'; // Fallback for development
-  
-  // Temporary debug - remove after fixing
-  console.log('Environment check:', {
-    envVar: process.env.REACT_APP_ADMIN_PASSWORD,
-    fallback: 'akash2025',
-    finalPassword: ADMIN_PASSWORD,
-    isUndefined: process.env.REACT_APP_ADMIN_PASSWORD === undefined,
-    isNull: process.env.REACT_APP_ADMIN_PASSWORD === null,
-    isEmpty: process.env.REACT_APP_ADMIN_PASSWORD === '',
-    envVarLength: process.env.REACT_APP_ADMIN_PASSWORD?.length,
-    allEnvVars: Object.keys(process.env).filter(key => key.startsWith('REACT_APP_'))
-  });
 
   useEffect(() => {
     // Check if already authenticated
@@ -44,14 +32,6 @@ const AdminPanel = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    
-    // Temporary debug - remove after fixing
-    console.log('Login attempt:', {
-      enteredPassword: password,
-      expectedPassword: ADMIN_PASSWORD,
-      passwordsMatch: password === ADMIN_PASSWORD,
-      envVar: process.env.REACT_APP_ADMIN_PASSWORD
-    });
     
     if (password === ADMIN_PASSWORD) {
       setIsAuthenticated(true);

@@ -18,10 +18,8 @@ steps:
 
 - script: |
     npm ci --legacy-peer-deps
-    npm run build:optimized
+    REACT_APP_ADMIN_PASSWORD="$(ADMIN_PASSWORD)" npm run build:optimized
   displayName: 'Install dependencies & build React app'
-  env:
-    REACT_APP_ADMIN_PASSWORD: $(REACT_APP_ADMIN_PASSWORD)
 
 - task: CopyFiles@2
   inputs:
