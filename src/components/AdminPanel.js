@@ -19,7 +19,7 @@ const AdminPanel = () => {
   });
 
   // Simple password protection (in production, use proper authentication)
-  const ADMIN_PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD
+  const ADMIN_PASSWORD = process.env.REACT_APP_ADMIN_PASSWORD || 'akash2025'; // Fallback for development
 
   useEffect(() => {
     // Check if already authenticated
@@ -32,6 +32,7 @@ const AdminPanel = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    
     if (password === ADMIN_PASSWORD) {
       setIsAuthenticated(true);
       localStorage.setItem('admin_authenticated', 'true');
