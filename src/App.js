@@ -23,7 +23,6 @@ const TestimonialsSection = React.lazy(() => import('./components/TestimonialsSe
 import ReadingProgress from './components/ReadingProgress';
 const DevOpsPipelineVisualizer = React.lazy(() => import('./components/DevOpsPipelineVisualizer'));
 const MetricsDashboard = React.lazy(() => import('./components/MetricsDashboard'));
-import visitorTracking from './services/visitorTracking';
 
 // Client components removed - now showing only logos and names
 
@@ -71,17 +70,12 @@ function ScrollToTopButton() {
 function Home() {
   const location = useLocation();
 
-  useEffect(() => {
-    if (location.state?.scrollToClients) {
-      const section = document.getElementById("clients");
-      if (section) section.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [location]);
-
-  // Track visitor on home page load
-  useEffect(() => {
-    visitorTracking.trackPageView('home');
-  }, []);
+         useEffect(() => {
+           if (location.state?.scrollToClients) {
+             const section = document.getElementById("clients");
+             if (section) section.scrollIntoView({ behavior: "smooth" });
+           }
+         }, [location]);
 
   return (
     <>
