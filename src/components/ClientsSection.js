@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import LazyImage from './LazyImage';
 
@@ -18,29 +17,29 @@ const industries = [
   {
     name: 'Finance & Investment',
     clients: [
-      { name: 'Charles Stanley', logo: csLogo, link: '/charlesstanley' },
-      { name: 'Surety', logo: suretyLogo, link: '/surety' },
+      { name: 'Charles Stanley', logo: csLogo },
+      { name: 'Surety', logo: suretyLogo },
     ],
   },
   {
     name: 'Public Sector / Government',
     clients: [
-      { name: 'CAB', logo: cabLogo, link: '/cab' },
-      { name: 'MPSEDC', logo: mpLogo, link: '/mpsedc' },
-      { name: 'BEL', logo: belLogo, link: '/bel' },
-      { name: 'CDAC', logo: cdacLogo, link: '/cdac' },
+      { name: 'CAB', logo: cabLogo },
+      { name: 'MPSEDC', logo: mpLogo },
+      { name: 'BEL', logo: belLogo },
+      { name: 'CDAC', logo: cdacLogo },
     ],
   },
   {
     name: 'Technology & IT Services',
     clients: [
-      { name: 'LTIMindtree', logo: ltimLogo, link: '/ltim' },
+      { name: 'LTIMindtree', logo: ltimLogo },
     ],
   },
   {
     name: 'Media & Entertainment',
     clients: [
-      { name: 'Yash Raj Films', logo: yrfLogo, link: '/yrf' },
+      { name: 'Yash Raj Films', logo: yrfLogo },
     ],
   },
 ];
@@ -48,8 +47,6 @@ const industries = [
 
 
 const ClientsSection = memo(() => {
-  const navigate = useNavigate();
-
   return (
     <>
       <div id="clients" className="px-4 sm:px-6 py-8 sm:py-12">
@@ -76,16 +73,13 @@ const ClientsSection = memo(() => {
               {industry.clients.map((client, index) => (
                 <motion.div
                   key={client.name}
-                    className="bg-white rounded-lg p-2 sm:p-3 cursor-pointer hover:shadow-lg transition-all duration-300 hover:scale-105"
-                  onClick={() => navigate(client.link)}
+                    className="bg-white rounded-lg p-2 sm:p-3 hover:shadow-lg transition-all duration-300"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                     transition={{ delay: (industryIndex * 0.1) + (index * 0.05), duration: 0.4 }}
                     whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
                     animate={{ scale: 1 }}
-                    exit={{ scale: 0.95 }}
                   >
                     <div className="flex flex-col items-center justify-center h-16 sm:h-20">
                       <LazyImage src={client.logo} alt={client.name} className="h-6 sm:h-8 object-contain mb-1" />

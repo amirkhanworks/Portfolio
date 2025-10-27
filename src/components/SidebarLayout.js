@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaLinkedin, FaGithub, FaArrowLeft, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa';
 import profilePic from '../assets/Profile photo/Me.jpg';
-import CompactBlogSection from './CompactBlogSection';
 
 const SidebarLayout = ({ children, showBack }) => {
   const navigate = useNavigate();
@@ -26,10 +25,10 @@ const SidebarLayout = ({ children, showBack }) => {
           <nav className="px-4 pb-3">
             <div className="grid grid-cols-3 gap-2 text-xs">
               <a onClick={() => setMobileMenuOpen(false)} href="#about" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">ABOUT</a>
+              <a onClick={() => setMobileMenuOpen(false)} href="#clients" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">PROJECTS</a>
               <a onClick={() => setMobileMenuOpen(false)} href="#experience" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">EXP</a>
               <a onClick={() => setMobileMenuOpen(false)} href="#skills" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">SKILLS</a>
               <a onClick={() => setMobileMenuOpen(false)} href="#certifications" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">CERTS</a>
-              <a onClick={() => setMobileMenuOpen(false)} href="#clients" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">CLIENTS</a>
               <a onClick={() => setMobileMenuOpen(false)} href="#blogs" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">BLOGS</a>
               <a onClick={() => setMobileMenuOpen(false)} href="#testimonials" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center col-span-2">TESTIMONIALS</a>
               <a onClick={() => setMobileMenuOpen(false)} href="#contact" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">CONTACT</a>
@@ -96,20 +95,15 @@ const SidebarLayout = ({ children, showBack }) => {
 
         {/* Divider line - hidden since mobile nav moved to header */}
         <div className="hidden" />
-
-        {/* Compact Blog Section - Desktop Only */}
-        <div className="hidden lg:block w-full">
-          <CompactBlogSection />
-        </div>
       </aside>
 
       {/* Desktop Nav */}
       <nav className="hidden lg:flex fixed top-0 right-0 w-[70%] z-50 bg-transparent backdrop-blur-md px-6 md:px-12 py-4 justify-end space-x-4 text-sm font-medium border-b border-white/10">
         <a href="#about" className="text-gray-300 hover:text-accent">ABOUT</a>
+        <a href="#clients" className="text-gray-300 hover:text-accent">PROJECTS</a>
         <a href="#experience" className="text-gray-300 hover:text-accent">EXPERIENCE</a>
         <a href="#skills" className="text-gray-300 hover:text-accent">SKILLS</a>
         <a href="#certifications" className="text-gray-300 hover:text-accent">CERTS</a>
-        <a href="#clients" className="text-gray-300 hover:text-accent">CLIENTS</a>
         <a href="#testimonials" className="text-gray-300 hover:text-accent">TESTIMONIALS</a>
         <a href="#contact" className="text-gray-300 hover:text-accent">CONTACT</a>
       </nav>

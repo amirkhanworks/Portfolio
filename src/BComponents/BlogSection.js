@@ -18,7 +18,7 @@ const BlogSection = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.error(err);
+        // Silently handle errors in production
         setLoading(false);
       });
   }, []);

@@ -1,44 +1,55 @@
-import React, { useState, useEffect, Suspense, useCallback } from 'react';
+import React, { useState, useEffect, Suspense, useCallback, useMemo } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import './index.css';
 import { FaChevronUp } from 'react-icons/fa';
 
 import SidebarLayout from './components/SidebarLayout';
-import ProjectModal from './components/ProjectModal';
 import ExperienceSection from './components/ExperienceSection';
 const BlogSection = React.lazy(() => import('./BComponents/BlogSection'));
 import ClientsSection from './components/ClientsSection';
-import PhotoGallery from './components/PhotoGallery';
 import LoadingSpinner from './components/LoadingSpinner';
-import { usePerformance } from './hooks/usePerformance';
+// Only import performance monitoring in development
+const { usePerformance } = process.env.NODE_ENV === 'development' 
+  ? require('./hooks/usePerformance') 
+  : { usePerformance: () => {} };
 
-import CertificationsSection from './components/CertificationsSection';
-import SkillsMatrix from './components/SkillsMatrix';
-import ContactSection from './components/ContactSection';
-import ProfessionalSummary from './components/ProfessionalSummary';
-import FeaturedProjects from './components/FeaturedProjects';
-import TestimonialsSection from './components/TestimonialsSection';
-
-
+// Lazy load heavy components
+const CertificationsSection = React.lazy(() => import('./components/CertificationsSection'));
+const SkillsMatrix = React.lazy(() => import('./components/SkillsMatrix'));
+const ContactSection = React.lazy(() => import('./components/ContactSection'));
+const ProfessionalSummary = React.lazy(() => import('./components/ProfessionalSummary'));
+const TestimonialsSection = React.lazy(() => import('./components/TestimonialsSection'));
 
 import ReadingProgress from './components/ReadingProgress';
+const DevOpsPipelineVisualizer = React.lazy(() => import('./components/DevOpsPipelineVisualizer'));
+const MetricsDashboard = React.lazy(() => import('./components/MetricsDashboard'));
+const AdminPanel = React.lazy(() => import('./components/AdminPanel'));
+import visitorTracking from './services/visitorTracking';
 
-// Lazy load client components
-const Surety = React.lazy(() => import('./Clients/Surety'));
-const CAB = React.lazy(() => import('./Clients/CAB'));
-const MPSEDC = React.lazy(() => import('./Clients/MPSEDC'));
-const LTIM = React.lazy(() => import('./Clients/LTIM'));
-const BEL = React.lazy(() => import('./Clients/BEL'));
-const CDAC = React.lazy(() => import('./Clients/CDAC'));
-const YRF = React.lazy(() => import('./Clients/YRF'));
-const CharlesStanley = React.lazy(() => import('./Clients/CharlesStanley'));
+// Client components removed - now showing only logos and names
 
+// Throttle function for performance optimization
+const throttle = (func, limit) => {
+  let inThrottle;
+  return function() {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  }
+};
 
 function ScrollToTopButton() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const toggleVisibility = () => setVisible(window.scrollY > 300);
+    const toggleVisibility = throttle(() => {
+      setVisible(window.scrollY > 300);
+    }, 100); // Throttle to 100ms
+
     window.addEventListener('scroll', toggleVisibility);
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
@@ -58,7 +69,7 @@ function ScrollToTopButton() {
   ) : null;
 }
 
-function Home({ setSelectedProject }) {
+function Home() {
   const location = useLocation();
 
   useEffect(() => {
@@ -68,69 +79,91 @@ function Home({ setSelectedProject }) {
     }
   }, [location]);
 
+  // Track visitor on home page load
+  useEffect(() => {
+    visitorTracking.trackPageView('home');
+  }, []);
+
   return (
     <>
-      <div className="space-y-8 sm:space-y-12">
-        <ProfessionalSummary />
-        <ExperienceSection />
-        <SkillsMatrix />
-        <CertificationsSection />
-        {/* <FeaturedProjects /> */}
+      <div className="space-y-8 sm:space-y-10">
+        <Suspense fallback={<LoadingSpinner />}>
+          <ProfessionalSummary />
+        </Suspense>
+        
+        {/* Metrics Dashboard - Key Achievements */}
+        <Suspense fallback={<LoadingSpinner />}>
+          <MetricsDashboard />
+        </Suspense>
+        
+        {/* Client Projects - Prioritized */}
         <ClientsSection />
-        <PhotoGallery />
+        
+        <ExperienceSection />
+        
+        {/* DevOps Pipeline Visualizer - Interactive Feature */}
+        <Suspense fallback={<LoadingSpinner />}>
+          <DevOpsPipelineVisualizer />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingSpinner />}>
+          <SkillsMatrix />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingSpinner />}>
+          <CertificationsSection />
+        </Suspense>
+        
         {/* Blog Section - Mobile Only */}
         <div className="block lg:hidden">
           <Suspense fallback={<LoadingSpinner />}>
             <BlogSection />
           </Suspense>
         </div>
-        <TestimonialsSection />
-        <ContactSection />
+        
+        <Suspense fallback={<LoadingSpinner />}>
+          <TestimonialsSection />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingSpinner />}>
+          <ContactSection />
+        </Suspense>
       </div>
 
-      <footer id="contact" className="text-sm text-gray-500 mt-16 text-center">
-        <div className="flex flex-col items-center space-y-1 text-white text-opacity-90 text-[13px] font-light">
-        </div>
-        <p className="mt-4 text-gray-500">© {new Date().getFullYear()} Akash Roy. Built with React + Tailwind. Hosted on Azure.</p>
+      <footer id="contact" className="text-sm text-gray-500 mt-16 text-center pb-8">
+        <p className="text-gray-400">© {new Date().getFullYear()} Akash Roy. Built with React + Tailwind. Hosted on Azure.</p>
       </footer>
     </>
   );
 }
 
 function App() {
-  const [selectedProject, setSelectedProject] = useState(null);
-  
-  // Performance monitoring
+  // Performance monitoring - only in development
   usePerformance();
 
-
-
+  // Optimized mouse tracking with throttling
   useEffect(() => {
-    const updateCursor = (e) => {
+    const updateCursor = throttle((e) => {
       document.documentElement.style.setProperty('--x', `${e.clientX}px`);
       document.documentElement.style.setProperty('--y', `${e.clientY}px`);
-    };
+    }, 16); // ~60fps throttling
+
     window.addEventListener('mousemove', updateCursor);
     return () => window.removeEventListener('mousemove', updateCursor);
   }, []);
 
+  // Memoize routes to prevent unnecessary re-renders
+  const routes = useMemo(() => (
+    <Routes>
+      <Route path="/" element={<SidebarLayout><Home /></SidebarLayout>} />
+      <Route path="/admin" element={<SidebarLayout><Suspense fallback={<LoadingSpinner />}><AdminPanel /></Suspense></SidebarLayout>} />
+    </Routes>
+  ), []);
+
   return (
     <>
       <div id="radial-overlay" />
-      <Routes>
-                <Route path="/" element={<SidebarLayout><Home setSelectedProject={setSelectedProject} /></SidebarLayout>} />
-        <Route path="/surety" element={<SidebarLayout showBack={true}><Suspense fallback={<LoadingSpinner />}><Surety /></Suspense></SidebarLayout>} />
-        <Route path="/cab" element={<SidebarLayout showBack={true}><Suspense fallback={<LoadingSpinner />}><CAB /></Suspense></SidebarLayout>} />
-        <Route path="/mpsedc" element={<SidebarLayout showBack={true}><Suspense fallback={<LoadingSpinner />}><MPSEDC /></Suspense></SidebarLayout>} />
-        <Route path="/ltim" element={<SidebarLayout showBack={true}><Suspense fallback={<LoadingSpinner />}><LTIM /></Suspense></SidebarLayout>} />
-        <Route path="/bel" element={<SidebarLayout showBack={true}><Suspense fallback={<LoadingSpinner />}><BEL /></Suspense></SidebarLayout>} />
-        <Route path="/cdac" element={<SidebarLayout showBack={true}><Suspense fallback={<LoadingSpinner />}><CDAC /></Suspense></SidebarLayout>} />
-        <Route path="/yrf" element={<SidebarLayout showBack={true}><Suspense fallback={<LoadingSpinner />}><YRF /></Suspense></SidebarLayout>} />
-        <Route path="/charlesstanley" element={<SidebarLayout showBack={true}><Suspense fallback={<LoadingSpinner />}><CharlesStanley /></Suspense></SidebarLayout>} />
-
-        </Routes>
-
-      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+      {routes}
       <ScrollToTopButton />
       <ReadingProgress />
     </>

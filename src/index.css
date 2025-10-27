@@ -4,13 +4,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CSS Variables for consistent color scheme */
+:root {
+  --primary: #0891b2;
+  --primary-dark: #0e7490;
+  --primary-light: #06b6d4;
+  --accent: #22d3ee;
+  --bg-primary: #0a0e27;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --border-color: rgba(8, 145, 178, 0.2);
+  --border-hover: rgba(8, 145, 178, 0.4);
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 4rem;
 }
 
 body {
-  background-color: #0e0f23;
+  background-color: #0a0e27;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
@@ -71,25 +87,24 @@ nav {
   }
 }
 
-/* Radial animation behind cursor - optimized for performance */
+/* Optimized radial animation - simplified for better performance */
 #radial-overlay {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   background: radial-gradient(
-    400px circle at var(--x) var(--y),
-    rgba(56, 189, 248, 0.25),
-    rgba(56, 189, 248, 0.15) 30%,
-    rgba(56, 189, 248, 0.05) 60%,
-    transparent 80%
+    300px circle at var(--x) var(--y),
+    rgba(56, 189, 248, 0.15),
+    transparent 60%
   );
   transform: translateZ(0); /* Hardware acceleration */
   will-change: transform;
-  transition: background 0.05s ease;
+  transition: background 0.1s ease;
 }
 
-#radial-overlay::before {
+/* Remove the duplicate pseudo-element for better performance */
+/* #radial-overlay::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -101,7 +116,7 @@ nav {
     transparent 80%
   );
   transform: translateZ(0);
-}
+} */
 
 .client-back-btn {
   position: fixed;
@@ -129,6 +144,39 @@ img {
   transition: opacity 0.3s ease-in-out;
 }
 
+/* Enhanced reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Disable radial overlay for users who prefer reduced motion */
+  #radial-overlay {
+    display: none !important;
+  }
+  
+  /* Disable floating animations */
+  .animate-float {
+    animation: none !important;
+  }
+}
+
+/* Performance optimizations for animations */
+.animate-float {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Optimize transitions for better performance */
+.transition-all {
+  will-change: transform, opacity;
+}
+
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -136,5 +184,116 @@ img {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Enhanced Micro-interactions */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.6);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* Smooth hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1b2e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #06b6d4, #0891b2);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #0891b2, #06b6d4);
+}
+
+html.light-mode ::-webkit-scrollbar-track {
+  background: #e5e7eb;
+}
+
+html.light-mode ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0891b2, #06b6d4);
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(6, 182, 212, 0.3);
+  color: white;
+}
+
+html.light-mode ::selection {
+  background-color: rgba(6, 182, 212, 0.4);
+  color: #1a202c;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid #06b6d4;
+  outline-offset: 2px;
+}
+
+/* Card hover effects */
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(6, 182, 212, 0.2);
 }
 
