@@ -12,8 +12,10 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  sonarProjectKey: 'akash-portfolio'
-  sonarProjectName: 'Akash Roy DevOps Portfolio'
+  sonarProjectKey: 'roydevops0145_devops-portfolio'
+  sonarProjectName: 'DevOps Portfolio'
+  sonarOrganization: 'roydevops0145'
+  sonarHostUrl: 'https://sonarcloud.io'
 
 steps:
 - task: NodeTool@0
@@ -27,7 +29,7 @@ steps:
 
 - task: SonarQubePrepare@5
   inputs:
-    SonarQube: 'SonarQube-Server'
+    SonarQube: 'SonarQube Cloud'
     scannerMode: 'CLI'
     configMode: 'file'
     cliProjectKey: '$(sonarProjectKey)'
@@ -35,6 +37,8 @@ steps:
     cliSources: 'src'
     cliLanguage: 'js'
     extraProperties: |
+      sonar.organization=$(sonarOrganization)
+      sonar.host.url=$(sonarHostUrl)
       sonar.pullrequest.key=$(System.PullRequest.PullRequestNumber)
       sonar.pullrequest.branch=$(System.PullRequest.SourceBranch)
       sonar.pullrequest.base=$(System.PullRequest.TargetBranch)

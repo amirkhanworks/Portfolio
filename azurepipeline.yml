@@ -17,8 +17,10 @@ pool:
 variables:
   buildConfiguration: 'Release'
   reactAppBuildDir: 'build'
-  sonarProjectKey: 'akash-portfolio'
-  sonarProjectName: 'Akash Roy DevOps Portfolio'
+  sonarProjectKey: 'roydevops0145_devops-portfolio'  # Your actual SonarCloud project key
+  sonarProjectName: 'DevOps Portfolio'
+  sonarOrganization: 'roydevops0145'  # Your SonarCloud organization
+  sonarHostUrl: 'https://sonarcloud.io'
 
 stages:
 - stage: Build
@@ -42,7 +44,7 @@ stages:
 
     - task: SonarQubePrepare@5
       inputs:
-        SonarQube: 'SonarQube-Server'
+        SonarQube: 'SonarQube Cloud'
         scannerMode: 'CLI'
         configMode: 'file'
         cliProjectKey: '$(sonarProjectKey)'
@@ -50,6 +52,8 @@ stages:
         cliSources: 'src'
         cliLanguage: 'js'
         extraProperties: |
+          sonar.organization=$(sonarOrganization)
+          sonar.host.url=$(sonarHostUrl)
           sonar.javascript.lcov.reportPaths=coverage/lcov.info
           sonar.exclusions=**/node_modules/**,**/build/**,**/coverage/**,**/*.test.js,**/*.spec.js
           sonar.test.exclusions=**/node_modules/**,**/build/**
