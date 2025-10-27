@@ -44,35 +44,33 @@ stages:
         npm run test:ci
       displayName: 'Run tests with coverage'
 
-    - task: SonarQubePrepare@5
+    - task: SonarCloudPrepare@1
       inputs:
-        SonarQube: 'SonarQube Cloud'
+        SonarCloud: 'SonarQube Cloud'
+        organization: '$(sonarOrganization)'
         scannerMode: 'CLI'
         configMode: 'file'
         cliProjectKey: '$(sonarProjectKey)'
         cliProjectName: '$(sonarProjectName)'
         cliSources: 'src'
-        cliLanguage: 'js'
         extraProperties: |
-          sonar.organization=$(sonarOrganization)
-          sonar.host.url=$(sonarHostUrl)
           sonar.javascript.lcov.reportPaths=coverage/lcov.info
           sonar.exclusions=**/node_modules/**,**/build/**,**/coverage/**,**/*.test.js,**/*.spec.js
           sonar.test.exclusions=**/node_modules/**,**/build/**
           sonar.coverage.exclusions=**/node_modules/**,**/build/**,**/*.test.js,**/*.spec.js
-      displayName: 'Prepare SonarQube analysis'
+      displayName: 'Prepare SonarCloud analysis'
 
     - script: |
         npm run build:optimized
       displayName: 'Build React app'
 
-    - task: SonarQubeAnalyze@5
-      displayName: 'Run SonarQube analysis'
+    - task: SonarCloudAnalyze@1
+      displayName: 'Run SonarCloud analysis'
 
-    - task: SonarQubePublish@5
+    - task: SonarCloudPublish@1
       inputs:
         pollingTimeoutSec: '300'
-      displayName: 'Publish SonarQube results'
+      displayName: 'Publish SonarCloud results'
 
     - task: CopyFiles@2
       inputs:
