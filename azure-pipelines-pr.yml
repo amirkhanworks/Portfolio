@@ -58,4 +58,5 @@ steps:
 - task: SonarCloudPublish@3
   inputs:
     pollingTimeoutSec: '300'
+    continueOnError: true
   displayName: 'Publish SonarCloud PR results'
