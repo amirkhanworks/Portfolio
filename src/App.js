@@ -23,7 +23,6 @@ const TestimonialsSection = React.lazy(() => import('./components/TestimonialsSe
 import ReadingProgress from './components/ReadingProgress';
 const DevOpsPipelineVisualizer = React.lazy(() => import('./components/DevOpsPipelineVisualizer'));
 const MetricsDashboard = React.lazy(() => import('./components/MetricsDashboard'));
-const AdminPanel = React.lazy(() => import('./components/AdminPanel'));
 import visitorTracking from './services/visitorTracking';
 
 // Client components removed - now showing only logos and names
@@ -152,13 +151,12 @@ function App() {
     return () => window.removeEventListener('mousemove', updateCursor);
   }, []);
 
-  // Memoize routes to prevent unnecessary re-renders
-  const routes = useMemo(() => (
-    <Routes>
-      <Route path="/" element={<SidebarLayout><Home /></SidebarLayout>} />
-      <Route path="/admin" element={<SidebarLayout><Suspense fallback={<LoadingSpinner />}><AdminPanel /></Suspense></SidebarLayout>} />
-    </Routes>
-  ), []);
+         // Memoize routes to prevent unnecessary re-renders
+         const routes = useMemo(() => (
+           <Routes>
+             <Route path="/" element={<SidebarLayout><Home /></SidebarLayout>} />
+           </Routes>
+         ), []);
 
   return (
     <>
