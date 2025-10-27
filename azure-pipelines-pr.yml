@@ -29,7 +29,7 @@ steps:
     npm ci --legacy-peer-deps
   displayName: 'Install dependencies'
 
-- task: SonarCloudPrepare@1
+- task: SonarCloudPrepare@3
   inputs:
     SonarCloud: 'SonarQube Cloud'
     organization: '$(sonarOrganization)'
@@ -52,10 +52,10 @@ steps:
     npm run build:optimized
   displayName: 'Build React app'
 
-- task: SonarCloudAnalyze@1
+- task: SonarCloudAnalyze@3
   displayName: 'Run SonarCloud PR analysis'
 
-- task: SonarCloudPublish@1
+- task: SonarCloudPublish@3
   inputs:
     pollingTimeoutSec: '300'
   displayName: 'Publish SonarCloud PR results'

@@ -44,7 +44,7 @@ stages:
         npm run test:ci
       displayName: 'Run tests with coverage'
 
-    - task: SonarCloudPrepare@1
+    - task: SonarCloudPrepare@3
       inputs:
         SonarCloud: 'SonarQube Cloud'
         organization: '$(sonarOrganization)'
@@ -64,10 +64,10 @@ stages:
         npm run build:optimized
       displayName: 'Build React app'
 
-    - task: SonarCloudAnalyze@1
+    - task: SonarCloudAnalyze@3
       displayName: 'Run SonarCloud analysis'
 
-    - task: SonarCloudPublish@1
+    - task: SonarCloudPublish@3
       inputs:
         pollingTimeoutSec: '300'
       displayName: 'Publish SonarCloud results'
