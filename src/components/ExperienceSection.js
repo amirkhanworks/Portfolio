@@ -1,7 +1,7 @@
 import React, { useState, useCallback, memo } from 'react';
 import LTIMLogo from '../assets/Company Logo/LTIMindtree.jpg';
 import IFILogo from '../assets/Company Logo/IFI_Tech.jpeg';
-import McKinseyLogo from '../assets/Company Logo/Mckinsey.jpg';
+import McKinseyLogo from '../assets/Company Logo/McKinsey.jpg';
 import { ChevronDown, ChevronUp, Building2, Calendar, MapPin, Award, Target } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import LazyImage from './LazyImage';

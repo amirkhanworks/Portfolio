@@ -25,11 +25,13 @@ const SidebarLayout = ({ children, showBack }) => {
           <nav className="px-4 pb-3">
             <div className="grid grid-cols-3 gap-2 text-xs">
               <a onClick={() => setMobileMenuOpen(false)} href="#about" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">ABOUT</a>
+              <a onClick={() => setMobileMenuOpen(false)} href="#metrics" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">METRICS</a>
+              <a onClick={() => setMobileMenuOpen(false)} href="#pipeline" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">DEMO</a>
+              <a onClick={() => setMobileMenuOpen(false)} href="#architecture" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">ARCH</a>
               <a onClick={() => setMobileMenuOpen(false)} href="#clients" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">PROJECTS</a>
               <a onClick={() => setMobileMenuOpen(false)} href="#experience" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">EXP</a>
               <a onClick={() => setMobileMenuOpen(false)} href="#skills" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">SKILLS</a>
               <a onClick={() => setMobileMenuOpen(false)} href="#certifications" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">CERTS</a>
-              <a onClick={() => setMobileMenuOpen(false)} href="#blogs" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">BLOGS</a>
               <a onClick={() => setMobileMenuOpen(false)} href="#testimonials" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center col-span-2">TESTIMONIALS</a>
               <a onClick={() => setMobileMenuOpen(false)} href="#contact" className="px-3 py-2 rounded bg-white/5 text-gray-200 text-center">CONTACT</a>
             </div>
@@ -85,7 +87,7 @@ const SidebarLayout = ({ children, showBack }) => {
         {/* Resume Button */}
         <div className="w-full flex justify-center mb-4">
           <a
-            href="/Akash - DevOps 2025.pdf"
+            href="/Akash DevOps 2026.pdf"
             download
             className="px-5 py-2 bg-cyan-600 text-white text-sm font-semibold rounded hover:bg-cyan-700 transition"
           >
@@ -100,6 +102,9 @@ const SidebarLayout = ({ children, showBack }) => {
       {/* Desktop Nav */}
       <nav className="hidden lg:flex fixed top-0 right-0 w-[70%] z-50 bg-transparent backdrop-blur-md px-6 md:px-12 py-4 justify-end space-x-4 text-sm font-medium border-b border-white/10">
         <a href="#about" className="text-gray-300 hover:text-accent">ABOUT</a>
+        <a href="#metrics" className="text-gray-300 hover:text-accent">METRICS</a>
+        <a href="#pipeline" className="text-gray-300 hover:text-accent">DEMO</a>
+        <a href="#architecture" className="text-gray-300 hover:text-accent">ARCHITECTURE</a>
         <a href="#clients" className="text-gray-300 hover:text-accent">PROJECTS</a>
         <a href="#experience" className="text-gray-300 hover:text-accent">EXPERIENCE</a>
         <a href="#skills" className="text-gray-300 hover:text-accent">SKILLS</a>

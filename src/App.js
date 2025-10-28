@@ -23,6 +23,7 @@ const TestimonialsSection = React.lazy(() => import('./components/TestimonialsSe
 import ReadingProgress from './components/ReadingProgress';
 const DevOpsPipelineVisualizer = React.lazy(() => import('./components/DevOpsPipelineVisualizer'));
 const MetricsDashboard = React.lazy(() => import('./components/MetricsDashboard'));
+const ArchitectureSection = React.lazy(() => import('./components/ArchitectureSection'));
 
 // Client components removed - now showing only logos and names
 
@@ -80,44 +81,48 @@ function Home() {
   return (
     <>
       <div className="space-y-8 sm:space-y-10">
+        {/* 1. Professional Summary - Hook visitors immediately */}
         <Suspense fallback={<LoadingSpinner />}>
           <ProfessionalSummary />
         </Suspense>
         
-        {/* Metrics Dashboard - Key Achievements */}
+        {/* 2. Metrics Dashboard - Show impact with numbers */}
         <Suspense fallback={<LoadingSpinner />}>
           <MetricsDashboard />
         </Suspense>
         
-        {/* Client Projects - Prioritized */}
-        <ClientsSection />
-        
-        <ExperienceSection />
-        
-        {/* DevOps Pipeline Visualizer - Interactive Feature */}
+        {/* 3. DevOps Pipeline Visualizer - Interactive engagement */}
         <Suspense fallback={<LoadingSpinner />}>
           <DevOpsPipelineVisualizer />
         </Suspense>
         
+        {/* 4. Architecture Section - Technical credibility */}
+        <Suspense fallback={<LoadingSpinner />}>
+          <ArchitectureSection />
+        </Suspense>
+        
+        {/* 5. Client Projects - Portfolio evidence */}
+        <ClientsSection />
+        
+        {/* 6. Experience Section - Background context */}
+        <ExperienceSection />
+        
+        {/* 7. Skills Matrix - Technical depth */}
         <Suspense fallback={<LoadingSpinner />}>
           <SkillsMatrix />
         </Suspense>
         
+        {/* 8. Certifications - Credentials */}
         <Suspense fallback={<LoadingSpinner />}>
           <CertificationsSection />
         </Suspense>
         
-        {/* Blog Section - Mobile Only */}
-        <div className="block lg:hidden">
-          <Suspense fallback={<LoadingSpinner />}>
-            <BlogSection />
-          </Suspense>
-        </div>
-        
+        {/* 9. Testimonials - Social proof */}
         <Suspense fallback={<LoadingSpinner />}>
           <TestimonialsSection />
         </Suspense>
         
+        {/* 10. Contact Section - Clear CTA */}
         <Suspense fallback={<LoadingSpinner />}>
           <ContactSection />
         </Suspense>

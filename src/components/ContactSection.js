@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, Calendar, Download, MessageCircle } from 'lucide-r
 const ContactSection = memo(() => {
   const handleDownloadResume = () => {
     const link = document.createElement('a');
-    link.href = '/Akash - DevOps 2025.pdf';
+    link.href = '/Akash DevOps 2026.pdf';
     link.download = 'Akash_Roy_DevOps_Resume.pdf';
     link.click();
   };
