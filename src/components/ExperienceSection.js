@@ -155,11 +155,20 @@ const ExperienceSection = memo(() => {
                   <div className="flex items-center gap-4 sm:gap-6">
                     <div className="relative">
                       <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-blue-400/20 rounded-lg blur-sm group-hover:blur-md transition-all"></div>
-                      <LazyImage 
-                        src={exp.logo} 
-                        alt={exp.company} 
-                        className="relative h-14 w-14 sm:h-18 sm:w-18 object-contain rounded-lg bg-white/5 p-2 shadow-lg border border-white/10" 
-                      />
+                      {exp.company === 'McKinsey & Company' ? (
+                        <img 
+                          src={exp.logo} 
+                          alt={exp.company} 
+                          className="relative h-14 w-14 sm:h-18 sm:w-18 object-contain rounded-lg bg-white/5 p-2 shadow-lg border border-white/10" 
+                          loading="eager"
+                        />
+                      ) : (
+                        <LazyImage 
+                          src={exp.logo} 
+                          alt={exp.company} 
+                          className="relative h-14 w-14 sm:h-18 sm:w-18 object-contain rounded-lg bg-white/5 p-2 shadow-lg border border-white/10" 
+                        />
+                      )}
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
