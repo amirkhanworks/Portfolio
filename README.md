@@ -2,14 +2,13 @@
 
 Minimal, consulting-grade portfolio for **Technical Product Manager** and **Product Analyst** roles (McKinsey / MBB-style). Built with **React**, **Vite**, **TypeScript**, **React Router**, and **Tailwind CSS**.
 
-**Important:** Run all commands from this directory (`Amir/Portfolio`)—where this README and `package.json` live.
+**Important:** Run all commands from the repository root (where this README and `package.json` live).
 
 ---
 
 ## Run locally
 
 ```bash
-cd Amir/Portfolio
 npm install
 npm run dev
 ```
