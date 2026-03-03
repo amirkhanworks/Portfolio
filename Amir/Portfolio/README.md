@@ -2,17 +2,19 @@
 
 Minimal, consulting-grade portfolio for **Technical Product Manager** and **Product Analyst** roles (McKinsey / MBB-style). Built with Next.js (App Router), TypeScript, and Tailwind CSS.
 
+**Important:** Run all commands from this directory (`Amir/Portfolio`)—where this README and `package.json` live.
+
 ---
 
 ## Run locally
 
 ```bash
-cd Portfolio
+cd Amir/Portfolio   # from repo root; or just ensure you're inside the Portfolio folder
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Then open [http://localhost:3000](http://localhost:3000). If port 3000 is in use, Next.js will use 3001 (or the next available port).
 
 ---
 

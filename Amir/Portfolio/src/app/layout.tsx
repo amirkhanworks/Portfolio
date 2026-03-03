@@ -63,9 +63,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           }}
         />
       </head>
-      <body className="min-h-screen bg-bg text-fg antialiased">
+      <body className="min-h-screen bg-bg text-fg antialiased flex flex-col">
         <Header />
-        <main className="flex-1 py-12 sm:py-16">
+        <main className="flex-1 w-full py-12 sm:py-16">
           <Container>{children}</Container>
         </main>
         <Footer />

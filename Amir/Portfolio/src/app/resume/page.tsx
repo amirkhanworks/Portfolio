@@ -14,7 +14,7 @@ const resumePath = "/resume.pdf";
 
 export default function ResumePage() {
   return (
-    <div className="space-y-12">
+    <div className="space-y-16">
       <Section>
         <SectionHeading
           label="Resume"

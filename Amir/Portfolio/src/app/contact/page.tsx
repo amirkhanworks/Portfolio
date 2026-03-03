@@ -8,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  return <ContactForm />;
+  return (
+    <div className="space-y-16">
+      <ContactForm />
+    </div>
+  );
 }

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function CaseStudiesPage() {
   return (
-    <div className="space-y-12">
+    <div className="space-y-16">
       <Section>
         <SectionHeading
           label="Case studies"

@@ -36,7 +36,7 @@ export function ContactForm() {
   );
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-8">
       <SectionHeading
         label="Contact"
         title="Get in touch"
