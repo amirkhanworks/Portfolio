@@ -4,6 +4,11 @@ node_modules/
 # Build output
 build/
 dist/
+.next/
+
+# Amir portfolio (Next.js)
+Amir/Portfolio/.next/
+Amir/Portfolio/node_modules/
 
 # System files
 .DS_Store
