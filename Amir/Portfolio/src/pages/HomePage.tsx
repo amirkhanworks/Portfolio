@@ -1,5 +1,4 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/Button";
 import { MetricCard } from "@/components/MetricCard";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -9,13 +8,7 @@ import { Tag } from "@/components/Tag";
 import { Divider } from "@/components/Divider";
 import { caseStudies } from "@/data/caseStudies";
 
-export const metadata: Metadata = {
-  title: "Amir Khan – Technical Product Manager & Product Analyst",
-  description:
-    "Amir Khan is a Technical Product Manager and Product Analyst in London, focusing on AI recruitment SaaS, Azure delivery, and IoT products."
-};
-
-export default function HomePage() {
+export function HomePage() {
   const featured = caseStudies.slice(0, 3);
 
   return (
@@ -130,7 +123,7 @@ export default function HomePage() {
                 </div>
                 <div className="mt-4">
                   <Link
-                    href={`/case-studies/${cs.slug}`}
+                    to={`/case-studies/${cs.slug}`}
                     className="text-label font-medium text-[var(--accent)] hover:underline focus-visible:rounded focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2"
                   >
                     Read case study →

@@ -1,18 +1,11 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Section } from "@/components/Section";
 import { Card } from "@/components/Card";
 import { Tag } from "@/components/Tag";
 import { caseStudies } from "@/data/caseStudies";
 
-export const metadata: Metadata = {
-  title: "Case Studies – Amir Khan",
-  description:
-    "Selected case studies from Amir Khan across AI recruitment SaaS, Azure managed services, and IoT smart home launches."
-};
-
-export default function CaseStudiesPage() {
+export function CaseStudiesPage() {
   return (
     <div className="space-y-16">
       <Section>
@@ -44,7 +37,7 @@ export default function CaseStudiesPage() {
             </div>
             <div className="mt-4">
               <Link
-                href={`/case-studies/${cs.slug}`}
+                to={`/case-studies/${cs.slug}`}
                 className="text-label font-medium text-[var(--accent)] hover:underline focus-visible:rounded focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2"
               >
                 Read case study →

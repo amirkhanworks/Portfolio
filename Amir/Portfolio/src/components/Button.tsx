@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { ReactNode } from "react";
 
 type ButtonProps = {
@@ -22,8 +22,12 @@ const variantClasses: Record<NonNullable<ButtonProps["variant"]>, string> = {
   secondary:
     "border border-[var(--border)] bg-transparent text-[var(--fg)] hover:bg-[var(--muted)] active:bg-[var(--border)] dark:border-[var(--border)]",
   ghost:
-    "text-[var(--muted-fg)] hover:bg-[var(--muted)] hover:text-[var(--fg)] active:bg-[var(--border)]"
+    "text-[var(--muted-fg)] hover:bg-[var(--muted)] hover:text-[var(--fg)] active:bg-[var(--border)]",
 };
+
+function isExternal(href: string): boolean {
+  return href.startsWith("http") || href.startsWith("mailto:");
+}
 
 export function Button({
   href,
@@ -34,13 +38,20 @@ export function Button({
   onClick,
   target,
   rel,
-  disabled
+  disabled,
 }: ButtonProps) {
   const classes = `${baseClasses} ${variantClasses[variant]} ${className ?? ""}`;
 
   if (href && !disabled) {
+    if (isExternal(href)) {
+      return (
+        <a href={href} className={classes} target={target} rel={rel}>
+          {children}
+        </a>
+      );
+    }
     return (
-      <Link href={href} className={classes} target={target} rel={rel}>
+      <Link to={href} className={classes} target={target} rel={rel}>
         {children}
       </Link>
     );

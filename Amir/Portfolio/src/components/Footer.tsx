@@ -1,11 +1,11 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { Container } from "@/components/Container";
 
 const footerLinks = [
   { href: "/case-studies", label: "Case Studies" },
   { href: "/about", label: "About" },
   { href: "/resume", label: "Resume" },
-  { href: "/contact", label: "Contact" }
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Footer() {
@@ -24,7 +24,7 @@ export function Footer() {
             {footerLinks.map(({ href, label }) => (
               <li key={href}>
                 <Link
-                  href={href}
+                  to={href}
                   className="text-small text-[var(--muted-fg)] hover:text-[var(--accent)] focus-visible:rounded focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg)]"
                 >
                   {label}

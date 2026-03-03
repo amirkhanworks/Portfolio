@@ -1,16 +1,9 @@
-import type { Metadata } from "next";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Section } from "@/components/Section";
 import { Divider } from "@/components/Divider";
 import { Prose } from "@/components/Prose";
 
-export const metadata: Metadata = {
-  title: "About – Amir Khan",
-  description:
-    "About Amir Khan, a Technical Product Manager and Product Analyst focused on AI recruitment SaaS, Azure delivery, and IoT launches."
-};
-
-export default function AboutPage() {
+export function AboutPage() {
   return (
     <div className="space-y-16">
       <Section>

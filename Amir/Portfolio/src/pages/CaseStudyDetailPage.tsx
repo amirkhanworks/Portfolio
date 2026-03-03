@@ -1,39 +1,26 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import Link from "next/link";
+import { useEffect } from "react";
+import { useParams, Link, Navigate } from "react-router-dom";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Tag } from "@/components/Tag";
 import { Card } from "@/components/Card";
 import { Divider } from "@/components/Divider";
 import { Prose } from "@/components/Prose";
-import { getCaseStudyBySlug, caseStudies } from "@/data/caseStudies";
+import { getCaseStudyBySlug } from "@/data/caseStudies";
 
-type CaseStudyPageProps = {
-  params: { slug: string };
-};
+export function CaseStudyDetailPage() {
+  const { slug } = useParams<{ slug: string }>();
+  const cs = slug ? getCaseStudyBySlug(slug) : undefined;
 
-export function generateStaticParams() {
-  return caseStudies.map((cs) => ({ slug: cs.slug }));
-}
+  useEffect(() => {
+    if (cs) document.title = `${cs.title} – Case Study – Amir Khan`;
+  }, [cs]);
 
-export function generateMetadata({
-  params
-}: CaseStudyPageProps): Metadata | undefined {
-  const cs = getCaseStudyBySlug(params.slug);
-  if (!cs) return undefined;
-  return {
-    title: `${cs.title} – Case Study – Amir Khan`,
-    description: cs.headline
-  };
-}
-
-export default function CaseStudyPage({ params }: CaseStudyPageProps) {
-  const cs = getCaseStudyBySlug(params.slug);
-  if (!cs) return notFound();
+  if (!cs) {
+    return <Navigate to="/case-studies" replace />;
+  }
 
   return (
     <article className="space-y-12">
-      {/* Page header */}
       <header className="space-y-4">
         <p className="text-label text-[var(--muted-fg)]">
           {cs.client} · {cs.role} · {cs.timeframe}
@@ -50,9 +37,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
       </header>
 
       <div className="grid gap-12 lg:grid-cols-[1fr_280px] lg:gap-16">
-        {/* Main content */}
         <div className="min-w-0 space-y-12">
-          {/* Executive summary – key bullets at top */}
           <section aria-label="Executive summary">
             <SectionHeading label="Overview" title="Executive summary" />
             <ul
@@ -173,7 +158,6 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
           </section>
         </div>
 
-        {/* Quick Facts – right sidebar on desktop */}
         <aside
           className="lg:sticky lg:top-24 lg:self-start"
           aria-label="Quick facts"
@@ -209,7 +193,7 @@ export default function CaseStudyPage({ params }: CaseStudyPageProps) {
             </dl>
             <div className="pt-2 border-t border-[var(--border)]">
               <Link
-                href="/case-studies"
+                to="/case-studies"
                 className="text-label font-medium text-[var(--accent)] hover:underline focus-visible:rounded focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2"
               >
                 ← All case studies

@@ -1,18 +1,11 @@
-import type { Metadata } from "next";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/Button";
 import { Prose } from "@/components/Prose";
 
-export const metadata: Metadata = {
-  title: "Resume – Amir Khan",
-  description:
-    "View and download the resume of Amir Khan, Technical Product Manager and Product Analyst."
-};
-
 const resumePath = "/resume.pdf";
 
-export default function ResumePage() {
+export function ResumePage() {
   return (
     <div className="space-y-16">
       <Section>

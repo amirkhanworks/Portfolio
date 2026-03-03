@@ -1,6 +1,6 @@
 # Amir Khan — Portfolio
 
-Minimal, consulting-grade portfolio for **Technical Product Manager** and **Product Analyst** roles (McKinsey / MBB-style). Built with Next.js (App Router), TypeScript, and Tailwind CSS.
+Minimal, consulting-grade portfolio for **Technical Product Manager** and **Product Analyst** roles (McKinsey / MBB-style). Built with **React**, **Vite**, **TypeScript**, **React Router**, and **Tailwind CSS**.
 
 **Important:** Run all commands from this directory (`Amir/Portfolio`)—where this README and `package.json` live.
 
@@ -9,118 +9,80 @@ Minimal, consulting-grade portfolio for **Technical Product Manager** and **Prod
 ## Run locally
 
 ```bash
-cd Amir/Portfolio   # from repo root; or just ensure you're inside the Portfolio folder
+cd Amir/Portfolio
 npm install
 npm run dev
 ```
 
-Then open [http://localhost:3000](http://localhost:3000). If port 3000 is in use, Next.js will use 3001 (or the next available port).
+Then open **http://localhost:5173** (Vite’s default port).
 
 ---
 
-## Build & deploy (e.g. Vercel)
+## Build & deploy
 
 ```bash
 npm run build
-npm start
+npm run preview   # preview production build locally
 ```
 
-**Vercel:** Connect the repo to Vercel; the default build command `next build` and output directory are used automatically. Set the **root directory** to `Portfolio` if the repo root is the parent folder.
+Output is in `dist/`. Deploy `dist` to any static host (Vercel, Netlify, GitHub Pages, etc.). For client-side routing, configure your host to serve `index.html` for all routes (e.g. Vercel/Netlify do this by default for SPAs).
 
 ---
 
 ## How to edit content
 
-### Case studies and site copy
+### Case studies
 
-- **Single data file:** All case study content lives in **`src/data/caseStudies.ts`**.
-  - Edit the `caseStudies` array: each object has `slug`, `title`, `client`, `role`, `timeframe`, `headline`, `tags`, `executiveSummary`, `problem`, `usersStakeholders`, `constraints`, `approach`, `delivered`, `impact`, `learnings`, and `artifacts`.
-  - To add a case study: add a new object with a URL-friendly `slug` (e.g. `my-new-project`). Sitemap is built from `caseStudies`.
-  - Home shows the first 3 as “Selected experience”; the Case Studies page lists all. Reorder in `caseStudies` to change order.
+- **Single data file:** **`src/data/caseStudies.ts`**. Edit the `caseStudies` array. Home shows the first 3 as “Selected experience”; the Case Studies page lists all.
 
 ### Resume PDF
 
-- **Place your resume at:** `public/resume.pdf`.
-- The site links to `/resume.pdf` for viewing and download. Replace or overwrite `public/resume.pdf` with your file (keep the name `resume.pdf`), then rebuild/redeploy.
+- Put your PDF in **`public/resume.pdf`**. The site uses `/resume.pdf` for viewing and download.
 
 ### Contact email & LinkedIn
 
-- **Contact page:** Update the `EMAIL` constant in **`src/components/ContactForm.tsx`** (e.g. `mailto:your@email.com`).
-- **LinkedIn:** Update the `href` of the LinkedIn button in the same file to your profile URL.
+- **`src/components/ContactForm.tsx`** — update the `EMAIL` constant and the LinkedIn button `href`.
 
-### Metadata & SEO
+### Page titles
 
-- **Site-wide:** `src/app/layout.tsx` exports `metadata` (title, description, OpenGraph, etc.). Adjust `siteUrl`, `siteTitle`, and `siteDescription` for your domain and positioning.
-- **Per page:** Each page exports its own `metadata` (title, description).
-- **Sitemap:** `src/app/sitemap.ts` — add or remove routes as you add/remove pages or case studies.
-- **Robots:** `src/app/robots.ts` — adjust if you need to allow/disallow specific paths.
+- **`src/Layout.tsx`** — `TITLES` object and `getPageTitle()` set the document title per route. Case study detail titles are set in **`src/pages/CaseStudyDetailPage.tsx`**.
 
 ---
 
 ## Project structure
 
 ```
-Portfolio/
+Amir/Portfolio/
+├── index.html
 ├── public/
-│   └── resume.pdf              ← Add your PDF here
+│   ├── favicon.svg
+│   └── resume.pdf          ← Add your PDF here
 ├── src/
-│   ├── app/
-│   │   ├── layout.tsx           Root layout, Inter font, theme script, Header/Footer
-│   │   ├── page.tsx             Home (hero, proof, What I do, selected experience)
-│   │   ├── globals.css          Tokens, typography
-│   │   ├── about/page.tsx       About + Principles
-│   │   ├── case-studies/
-│   │   │   ├── page.tsx         Case studies index
-│   │   │   └── [slug]/page.tsx  Case study detail
-│   │   ├── contact/page.tsx     Contact (ContactForm)
-│   │   ├── resume/page.tsx      Resume PDF + download
-│   │   ├── sitemap.ts           Dynamic sitemap
-│   │   └── robots.ts            robots.txt
-│   ├── components/
-│   │   ├── Header.tsx           Sticky nav, active link, theme toggle
-│   │   ├── Footer.tsx           Footer links
-│   │   ├── Container.tsx        Max-width wrapper
-│   │   ├── Section.tsx          Section wrapper
-│   │   ├── SectionHeading.tsx   Label + title + description
-│   │   ├── Divider.tsx          Section separator
-│   │   ├── Prose.tsx            Body copy
-│   │   ├── Button.tsx           Primary/secondary/ghost
-│   │   ├── Card.tsx             Card
-│   │   ├── MetricCard.tsx       Proof metrics
-│   │   ├── Tag.tsx              Tag/badge
-│   │   ├── ThemeToggle.tsx      Light/dark (class strategy)
-│   │   └── ContactForm.tsx      Mailto form
+│   ├── main.tsx
+│   ├── App.tsx             Routes + Layout wrapper
+│   ├── Layout.tsx          Header, main, Footer, document title
+│   ├── index.css           Tailwind + design tokens
+│   ├── pages/
+│   │   ├── HomePage.tsx
+│   │   ├── CaseStudiesPage.tsx
+│   │   ├── CaseStudyDetailPage.tsx
+│   │   ├── AboutPage.tsx
+│   │   ├── ResumePage.tsx
+│   │   └── ContactPage.tsx
+│   ├── components/         Header, Footer, Container, Button, Card, etc.
 │   └── data/
-│       └── caseStudies.ts       ← Edit all case study content
+│       └── caseStudies.ts  ← Edit all case study content
+├── vite.config.ts
 ├── tailwind.config.ts
-├── next.config.mjs
+├── tsconfig.json
 └── package.json
 ```
 
 ---
 
-## Design system
-
-- **Tokens:** CSS variables in `globals.css` for `--bg`, `--fg`, `--muted`, `--muted-fg`, `--card`, `--border`, `--accent`, `--accent-fg`. Light/dark via `.dark` on `html`.
-- **Typography:** `.text-display`, `.text-h1`, `.text-h2`, `.text-h3`, `.text-body`, `.text-small`, `.text-label` in `globals.css`. Font: Inter (next/font).
-- **Theme:** Toggle in navbar; preference stored in `localStorage`; no flash (inline script in layout).
-
----
-
-## Design QA checklist
-
-Before shipping, verify:
-
-- [ ] **Spacing consistency** — Section spacing is `space-y-16`/`space-y-12` between blocks; card grids use `gap-5`; section internal spacing is `space-y-4`/`space-y-6`.
-- [ ] **Dark mode** — Toggle in header switches theme; all pages use CSS variables so colors update; no hardcoded neutrals in components.
-- [ ] **Focus states** — All interactive elements (links, buttons, inputs, toggle) have visible focus ring (`focus-visible:ring-2 focus-visible:ring-[var(--ring)]` or equivalent).
-- [ ] **Responsiveness** — Home hero stacks on small screens; case study grid is 1 col → 2 → 3; resume is stacked on mobile, two columns on lg; contact form stacks; Quick Facts sidebar stacks below content on small screens.
-- [ ] **Semantic HTML** — Landmarks (`header`, `main`, `footer`, `nav`, `section`, `article`, `aside`); headings in order; form labels and `aria-*` where needed.
-- [ ] **No external assets** — Site works on localhost without external images/fonts except Inter from next/font (Google).
-
----
-
 ## Tech stack
 
-- **Next.js 14** (App Router), **TypeScript**, **Tailwind CSS**
-- No UI kits; minimal dependencies. Design tokens in CSS; Tailwind mapped to vars.
+- **React 18** + **Vite 5** + **TypeScript**
+- **React Router 6** for client-side routing
+- **Tailwind CSS** with design tokens (light/dark via `.dark` on `html`)
+- No UI kits; minimal dependencies.

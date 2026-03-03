@@ -1,5 +1,3 @@
-"use client";
-
 import { useCallback } from "react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Button } from "@/components/Button";
