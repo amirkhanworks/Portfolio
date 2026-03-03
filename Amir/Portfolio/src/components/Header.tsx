@@ -11,8 +11,7 @@ const navItems = [
 ];
 
 export function Header() {
-  const location = useLocation();
-  const pathname = location.pathname;
+  const pathname = useLocation().pathname;
 
   return (
     <header

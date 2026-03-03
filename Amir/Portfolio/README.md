@@ -25,7 +25,32 @@ npm run build
 npm run preview   # preview production build locally
 ```
 
-Output is in `dist/`. Deploy `dist` to any static host (Vercel, Netlify, GitHub Pages, etc.). For client-side routing, configure your host to serve `index.html` for all routes (e.g. Vercel/Netlify do this by default for SPAs).
+Output is in `dist/`. The build also creates `dist/404.html` (copy of `index.html`) so that GitHub Pages serves your SPA for every route and React Router can handle the path.
+
+### Deploy to GitHub Pages (fix 404)
+
+If your site is **https://&lt;username&gt;.github.io/&lt;repo-name&gt;/** (project site), you must set the base path when building, or assets and routes will break and you’ll see 404s.
+
+1. **Build with your repo name as base path:**
+
+   ```bash
+   # Replace YOUR-REPO-NAME with your actual GitHub repo name (e.g. Amir or portfolio)
+   VITE_BASE_PATH=/YOUR-REPO-NAME/ npm run build
+   ```
+
+   Example: if the repo is `Amir` and the URL is `https://johndoe.github.io/Amir/`, run:
+   ```bash
+   VITE_BASE_PATH=/Amir/ npm run build
+   ```
+
+2. **Deploy the contents of `dist/`:**
+   - Push `dist/` to the `gh-pages` branch, or
+   - Use GitHub Actions to build and deploy (in the workflow, set `VITE_BASE_PATH=/${{ github.event.repository.name }}/` and upload `dist`).
+
+3. **In GitHub repo settings:**  
+   Settings → Pages → Source: deploy from branch `gh-pages` (or from GitHub Actions), folder `/ (root)`.
+
+After that, opening **https://&lt;username&gt;.github.io/&lt;repo-name&gt;/** or any subpath (e.g. `/Amir/case-studies`) will load the app and React Router will show the correct page. The build step creates `404.html` so that direct links and refreshes on subpaths work instead of returning 404.
 
 ---
 

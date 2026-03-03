@@ -42,7 +42,7 @@ export function ContactForm() {
       />
 
       <div className="space-y-4">
-        <Prose className="text-body text-[var(--muted-fg)]">
+        <Prose>
           <p>
             I&apos;m based in London and open to relocation. The best conversations
             start with a specific problem or mandate, not a generic job

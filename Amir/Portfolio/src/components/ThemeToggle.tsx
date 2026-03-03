@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 function getTheme(): "light" | "dark" {
-  if (typeof window === "undefined") return "light";
   const stored = localStorage.getItem("theme") as "light" | "dark" | null;
   if (stored) return stored;
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";

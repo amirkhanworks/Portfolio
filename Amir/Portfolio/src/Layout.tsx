@@ -4,8 +4,9 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Container } from "./components/Container";
 
+const DEFAULT_TITLE = "Amir Khan – Technical Product Manager & Product Analyst";
 const TITLES: Record<string, string> = {
-  "/": "Amir Khan – Technical Product Manager & Product Analyst",
+  "/": DEFAULT_TITLE,
   "/about": "About – Amir Khan",
   "/case-studies": "Case Studies – Amir Khan",
   "/resume": "Resume – Amir Khan",
@@ -13,9 +14,7 @@ const TITLES: Record<string, string> = {
 };
 
 function getPageTitle(pathname: string): string {
-  if (pathname in TITLES) return TITLES[pathname];
-  if (pathname.startsWith("/case-studies/")) return "Case Study – Amir Khan";
-  return "Amir Khan – Technical Product Manager & Product Analyst";
+  return TITLES[pathname] ?? (pathname.startsWith("/case-studies/") ? "Case Study – Amir Khan" : DEFAULT_TITLE);
 }
 
 type LayoutProps = {
